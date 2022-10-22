@@ -4,10 +4,10 @@ import { useDispatch } from "react-redux";
 import { __getJoin } from "./redux/modules/join/joinSlice";
 
 function App() {
-	const dispatch = useDispatch();
-	useEffect(() => {
-		dispatch(__getJoin("안녕"));
-	}, [dispatch]);
+	// const dispatch = useDispatch();
+	// useEffect(() => {
+	// 	dispatch(__getJoin("안녕"));
+	// }, [dispatch]);
 
 	return (
 		<>
