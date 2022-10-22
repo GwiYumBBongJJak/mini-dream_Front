@@ -83,4 +83,4 @@ module.exports = {
 
 	// endOfLine: 'auto', // EoF 방식, OS별로 처리 방식이 다름
 	// htmlWhitespaceSensitivity: 'css', // HTML 공백 감도 설정
-}
+};
