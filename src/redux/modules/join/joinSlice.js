@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const __getJoin = createAsyncThunk(
 	"Join/getJoin",
-	async (_, thunkAPI) => {
+	async (payload, thunkAPI) => {
 		try {
 			const data = await axios.get("http://54.180.79.123:8080/api/dummy");
 			console.log("data =>", data);
@@ -25,7 +25,7 @@ const joinSlice = createSlice({
 			state.join = action.payload;
 		},
 		[__getJoin.rejected]: (state, action) => {
-			console.log("__getJoin.rejected", action.payload);
+			console.log("__getJoin.rejected => ", action.payload);
 			state.join = action.payload;
 		},
 	},
