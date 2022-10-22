@@ -1,7 +1,11 @@
-import { Box } from "../../common";
+import { SignUpForm } from "../../components/join";
 
 const SignUpPage = () => {
-	return <Box>sign up</Box>;
+	return (
+		<>
+			<SignUpForm />
+		</>
+	);
 };
 
 export default SignUpPage;

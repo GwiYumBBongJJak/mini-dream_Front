@@ -1,7 +1,7 @@
-import { Box } from "../../common";
+import { SignInForm } from "../../components/join";
 
 const SignInPage = () => {
-	return <Box>Sign In</Box>;
+	return <SignInForm />;
 };
 
 export default SignInPage;

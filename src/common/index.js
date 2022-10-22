@@ -3,9 +3,10 @@ import Button from "./button";
 import Flex from "./flex";
 import Input from "./input";
 import Nav from "./nav";
-import { FirstHeading, SecondHeading, ThirdHeading } from "./Heading";
+import { FirstHeading, SecondHeading, ThirdHeading } from "./heading";
 import Text from "./text";
 import TextArea from "./textArea";
+import Form from "./form";
 
 export {
 	Box,
@@ -18,4 +19,5 @@ export {
 	ThirdHeading,
 	Text,
 	TextArea,
+	Form,
 };

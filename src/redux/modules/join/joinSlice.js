@@ -5,14 +5,13 @@ export const __getJoin = createAsyncThunk(
 	"Join/getJoin",
 	async (payload, thunkAPI) => {
 		try {
-			// 요청
+			console.log("payload => ", payload);
 			const data = await axios.get("http://54.180.79.123:8080/api/dummy");
-			// 응답 성공이라면 콘솔에 찍혀야 함
+
 			console.log("data =>", data);
-			// 요청 성공시 호출 함수
-			return thunkAPI.fulfillWithValue(data);
+
+			return thunkAPI.fulfillWithValue(data.data);
 		} catch (error) {
-			// 에러
 			return thunkAPI.rejectWithValue(error);
 		}
 	},
@@ -20,7 +19,7 @@ export const __getJoin = createAsyncThunk(
 
 const joinSlice = createSlice({
 	name: "join",
-	initialState: { join: null },
+	initialState: { test: null },
 	reducers: {},
 	extraReducers: {
 		[__getJoin.pending]: (state, _) => {},
@@ -29,9 +28,7 @@ const joinSlice = createSlice({
 			state.join = action.payload;
 		},
 		[__getJoin.rejected]: (state, action) => {
-			// 에러 발생시 찍히는 콘솔
-			// action.payload 는 에러 객체
-			console.log("__getJoin.rejected => ", action.payload);
+			console.log("__getJoin.rejected => ", JSON.parse(action.payload));
 			state.join = action.payload;
 		},
 	},
