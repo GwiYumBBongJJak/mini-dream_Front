@@ -8,7 +8,7 @@ const BoardLayout = () => {
 		<styles.BoardLayout>
 			<BoardNav />
 			<Box>
-				<FirstHeading>작성하기</FirstHeading>
+				<FirstHeading />
 			</Box>
 			<Outlet></Outlet>
 		</styles.BoardLayout>

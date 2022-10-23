@@ -4,9 +4,11 @@ const BoardEditPage = () => {
 	return (
 		<>
 			<Button>뒤로가기</Button>
-			<Input />
-			<Button>등록</Button>
-			<TextArea />
+			<form>
+				<Input />
+				<Button>등록</Button>
+				<TextArea />
+			</form>
 		</>
 	);
 };

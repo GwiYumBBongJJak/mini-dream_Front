@@ -1,12 +1,15 @@
-import { Box, Button, Text } from "../../common";
+import { Box, Button, Text, ThirdHeading } from "../../common";
+import { BoardChangeBtns, BoardReactions } from "../../components/board";
 
 const BoardDetailPage = () => {
 	return (
 		<>
 			<Button>뒤로가기</Button>
 			<Box>
+				<ThirdHeading />
 				<Text />
-				<Text />
+				<BoardReactions />
+				<BoardChangeBtns />
 			</Box>
 		</>
 	);
