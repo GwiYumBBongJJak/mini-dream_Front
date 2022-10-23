@@ -1,13 +1,26 @@
+import { Link } from "react-router-dom";
 import { Button, Input, TextArea } from "../../common";
+import useInput from "../../hooks/useInput";
 
 const BoardEditPage = () => {
+	const { boardTitle, handleOnChangeTitle } = useInput;
+	const { boardBody, handleOnChangeBody } = useInput;
+
 	return (
 		<>
-			<Button>뒤로가기</Button>
+			<Link to={-1}>뒤로가기</Link>
 			<form>
-				<Input />
+				<Input
+					name="boardTitle"
+					value={boardTitle}
+					onChange={handleOnChangeTitle}
+				/>
 				<Button>등록</Button>
-				<TextArea />
+				<TextArea
+					name="boardBody"
+					value={boardBody}
+					onChange={handleOnChangeBody}
+				/>
 			</form>
 		</>
 	);
