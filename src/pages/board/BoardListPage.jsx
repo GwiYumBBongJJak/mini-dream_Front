@@ -1,9 +1,24 @@
+import { useCallback, useEffect, useState } from "react";
 import { BoardItem } from "../../components/board";
+import { getBoardListApi } from "../../apis/boardApi";
+
 const BoardListPage = () => {
+	const [boardList, setBoardList] = useState([]);
+
+	const requestUpdate = useCallback(async () => {
+		const response = await getBoardListApi();
+		setBoardList(response);
+	}, []);
+
+	useEffect(() => {
+		requestUpdate();
+	}, [requestUpdate]);
+
 	return (
 		<>
-			<p>리스트(메인)페이지</p>
-			<BoardItem />
+			{boardList.map(boardListItem => (
+				<BoardItem key={boardListItem.id} {...boardListItem} />
+			))}
 		</>
 	);
 };

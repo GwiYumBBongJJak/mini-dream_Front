@@ -1,11 +1,12 @@
 import { Box, ThirdHeading, Text } from "../../common";
 import BoardReactions from "./BoardReactions";
 
-const BoardItem = ({ children }) => {
+const BoardItem = props => {
+	console.log(props);
 	return (
 		<Box>
-			<ThirdHeading>{children}</ThirdHeading>
-			<Text>{children}</Text>
+			<ThirdHeading>{props.boardTitle}</ThirdHeading>
+			<Text>{props.boardContent}</Text>
 			<BoardReactions />
 		</Box>
 	);

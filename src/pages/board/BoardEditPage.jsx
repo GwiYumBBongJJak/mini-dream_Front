@@ -1,25 +1,53 @@
-import { Link } from "react-router-dom";
+import { useMemo, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Button, Input, TextArea } from "../../common";
-import useInput from "../../hooks/useInput";
+import { useDispatch } from "react-redux";
+import { __addBoardItem } from "../../redux/modules/board/boardSlice";
 
 const BoardEditPage = () => {
-	const { boardTitle, handleOnChangeTitle } = useInput;
-	const { boardBody, handleOnChangeBody } = useInput;
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+	const { id } = useParams();
+
+	const init = {
+		boardTitle: "",
+		boardContent: "",
+	};
+
+	const [boardItem, setBoardItem] = useState(init);
+
+	const isEdit = useMemo(() => (id ? true : false), [id]);
+
+	const handleOnChange = e => {
+		const { name, value } = e.target;
+		setBoardItem({ ...boardItem, [name]: value });
+	};
+
+	const handleOnSubmit = e => {
+		e.preventDefault();
+
+		if (isEdit) {
+			console.log("수정중이네");
+		} else {
+			dispatch(__addBoardItem(boardItem));
+		}
+		navigate("../detail", { replace: true });
+	};
 
 	return (
 		<>
 			<Link to={-1}>뒤로가기</Link>
-			<form>
+			<form onSubmit={handleOnSubmit}>
 				<Input
 					name="boardTitle"
-					value={boardTitle}
-					onChange={handleOnChangeTitle}
+					value={boardItem.boardTitle}
+					onChange={handleOnChange}
 				/>
 				<Button>등록</Button>
 				<TextArea
-					name="boardBody"
-					value={boardBody}
-					onChange={handleOnChangeBody}
+					name="boardContent"
+					value={boardItem.boardContent}
+					onChange={handleOnChange}
 				/>
 			</form>
 		</>
