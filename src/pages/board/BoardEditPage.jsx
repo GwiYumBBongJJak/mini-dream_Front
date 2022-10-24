@@ -2,7 +2,10 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Button, Input, TextArea } from "../../common";
 import { useDispatch } from "react-redux";
-import { __addBoardItem } from "../../redux/modules/board/boardSlice";
+import {
+	__addBoardItem,
+	__updateBoardItem,
+} from "../../redux/modules/board/boardSlice";
 import { getBoardItemApi } from "../../apis/boardApi";
 
 const BoardEditPage = () => {
@@ -28,11 +31,11 @@ const BoardEditPage = () => {
 		e.preventDefault();
 
 		if (isEdit) {
-			console.log("수정중이네");
+			dispatch(__updateBoardItem(boardItem));
 		} else {
 			dispatch(__addBoardItem(boardItem));
 		}
-		navigate("../detail", { replace: true });
+		navigate(`../main`, { replace: true });
 	};
 
 	const requestUpdate = useCallback(async () => {

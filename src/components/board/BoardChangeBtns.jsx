@@ -1,10 +1,25 @@
+import { useDispatch } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 import { Text } from "../../common";
+import { __delBoardItem } from "../../redux/modules/board/boardSlice";
 
 const BoardChangeBtns = () => {
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
+	const { id } = useParams();
+
+	const handleUpdate = () => {
+		navigate(`../edit/${id}`);
+	};
+
+	const handleDelete = () => {
+		dispatch(__delBoardItem(id));
+	};
+
 	return (
 		<>
-			<Text>수정</Text>
-			<Text>삭제</Text>
+			<Text onClick={handleUpdate}>수정</Text>
+			<Text onClick={handleDelete}>삭제</Text>
 		</>
 	);
 };
