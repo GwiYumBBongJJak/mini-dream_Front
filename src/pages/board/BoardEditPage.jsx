@@ -13,7 +13,7 @@ const BoardEditPage = () => {
 	const navigate = useNavigate();
 	const { id } = useParams();
 	const response = useSelector(state => state.board.boardItem);
-
+	console.log("response =>", response);
 	const init = {
 		boardTitle: "",
 		boardContent: "",
@@ -36,19 +36,16 @@ const BoardEditPage = () => {
 		} else {
 			dispatch(__addBoardItem(boardItem));
 		}
-		navigate(`../main`, { replace: true });
+		navigate(`../main`);
 	};
 
 	const requestUpdate = useCallback(async () => {
 		if (isEdit) {
+			console.log(3);
 			dispatch(__getBoardItem(id));
 			setBoardItem(response);
 		}
 	}, [dispatch, id, isEdit, response]);
-
-	useEffect(() => {
-		requestUpdate();
-	}, [requestUpdate]);
 
 	return (
 		<>

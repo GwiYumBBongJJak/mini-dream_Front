@@ -7,11 +7,17 @@ const BoardListPage = () => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(__getBoardList);
+		console.log("useEffect--");
+		dispatch(__getBoardList());
+		console.log("dispatch--");
 	}, [dispatch]);
 
 	const boardList = useSelector(state => state.board.BoardItems);
-	console.log(boardList);
+	// console.log(boardList);
+
+	// if (boardList === undefined) {
+	// 	return null;
+	// }
 
 	return (
 		<>

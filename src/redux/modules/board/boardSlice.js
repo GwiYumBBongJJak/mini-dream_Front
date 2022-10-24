@@ -78,10 +78,12 @@ export const __getBoardList = createAsyncThunk(
 	"getBoardList",
 	async (_, thunkAPI) => {
 		try {
+			console.log("thunk");
 			const response = await axios.get(
 				`http://localhost:3001/boardItems`,
 				// /boards
 			);
+			console.log("response--", response);
 			return thunkAPI.fulfillWithValue(response.data);
 		} catch (error) {
 			return thunkAPI.rejectWithValue(error);
