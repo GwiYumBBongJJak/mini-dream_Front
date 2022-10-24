@@ -1,21 +1,18 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-
 import {
 	addBoardItemApi,
 	updateBoardItemApi,
 	deleteBoardItemApi,
 } from "../../../apis/boardApi";
 
+const BASE_URL = process.env.REACT_APP_SERVER;
+
 export const __addBoardItem = createAsyncThunk(
 	"addBoardItem",
 	async (payload, thunkAPI) => {
 		try {
-			const response = await axios.post(
-				`http://localhost:3001/boardItems`,
-				// `http://54.180.79.123:8080/api/auth/boards/create`,
-				payload,
-			);
+			const response = await axios.post(`${BASE_URL}/boardItems`, payload);
 			return thunkAPI.fulfillWithValue(response.data);
 		} catch (error) {
 			return thunkAPI.rejectWithValue(error);

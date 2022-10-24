@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const BASE_URL = process.env.REACT_APP_SERVER;
+
 const initialState = {
 	user: null,
 	token: null,
@@ -15,7 +17,7 @@ export const __requestSignUp = createAsyncThunk(
 		try {
 			console.log("requestSignUp payload =>", payload);
 			const response = await axios.post(
-				"http://54.180.79.123:8080/api/member/register",
+				`${BASE_URL}/api/member/register`,
 				payload,
 			);
 			console.log("response =>", response.data);
@@ -34,7 +36,7 @@ export const __requestSignIn = createAsyncThunk(
 		try {
 			console.log("requestSignIn payload =>", payload);
 			const response = await axios.post(
-				"http://54.180.79.123:8080/api/member/login",
+				`${BASE_URL}/api/member/login`,
 				payload,
 			);
 
@@ -54,13 +56,8 @@ export const __checkNicknameDuplicate = createAsyncThunk(
 		try {
 			console.log("checkNicknameDuplicate payload =>", payload);
 			const nickname = payload;
-			const response = await axios.get(
-				`http://54.180.79.123:8080/api/member/nickname/${nickname}`,
-				{
-					headers: {
-						"Content-Type": "application/json",
-					},
-				},
+			const response = await axios.post(
+				`${BASE_URL}/api/member/nickname/${nickname}`,
 			);
 			console.log("response =>", response);
 			return thunkAPI.fulfillWithValue(response.data);
@@ -77,13 +74,8 @@ export const __checkIdDuplicate = createAsyncThunk(
 		try {
 			console.log("checkIdDuplicate payload =>", payload);
 			const username = payload;
-			const response = await axios.get(
-				`http://54.180.79.123:8080/api/member/id/${username}`,
-				{
-					headers: {
-						"Content-Type": "application/json",
-					},
-				},
+			const response = await axios.post(
+				`${BASE_URL}/api/member/id/${username}`,
 			);
 			console.log("response =>", response);
 			return thunkAPI.fulfillWithValue(response.data);

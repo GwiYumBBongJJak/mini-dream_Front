@@ -30,6 +30,7 @@ const SignInForm = () => {
 			)}
 			<Input
 				placeholder="비밀번호를 입력해주세요"
+				type="password"
 				{...register("password", { required: true })}
 			/>
 			{errors.password && errors.password.type === "required" && (
