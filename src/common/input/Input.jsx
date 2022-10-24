@@ -1,7 +1,8 @@
 import * as styles from "./Input.styles";
+import { forwardRef } from "react";
 
-const Input = ({ children, ...props }) => {
-	return <styles.Input {...props}>{children}</styles.Input>;
-};
+const Input = forwardRef((props, ref) => {
+	return <styles.Input {...props} ref={ref} />;
+});
 
 export default Input;

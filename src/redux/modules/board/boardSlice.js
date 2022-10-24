@@ -47,6 +47,7 @@ export const __delBoardItem = createAsyncThunk(
 
 const initialState = {
 	boardItems: [],
+	statusAlertMessage: null,
 	boardItem: {},
 	statusMsg: {},
 };
