@@ -1,6 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const instance = axios.create({
+	baseURL: process.env.REACT_APP_SERVER,
+});
+
 export const __addBoardItem = createAsyncThunk(
 	"addBoardItem",
 	async (payload, thunkAPI) => {
