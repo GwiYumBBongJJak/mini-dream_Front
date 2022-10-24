@@ -11,6 +11,7 @@ export const __addBoardItem = createAsyncThunk(
 
 const initialState = {
 	boardItems: [],
+	statusAlertMessage: null,
 	boardItem: {},
 };
 
