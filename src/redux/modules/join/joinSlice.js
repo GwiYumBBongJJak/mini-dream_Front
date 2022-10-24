@@ -17,7 +17,7 @@ export const __requestSignUp = createAsyncThunk(
 		try {
 			console.log("requestSignUp payload =>", payload);
 			const response = await axios.post(
-				`${BASE_URL}/api/member/register`,
+				`http://3.34.144.42:8080/api/member/register`,
 				payload,
 			);
 
@@ -37,7 +37,7 @@ export const __requestSignIn = createAsyncThunk(
 		try {
 			console.log("requestSignIn payload =>", payload);
 			const response = await axios.post(
-				`${BASE_URL}/api/member/login`,
+				`http://3.34.144.42:8080/api/member/login`,
 				payload,
 			);
 
@@ -58,7 +58,7 @@ export const __checkNicknameDuplicate = createAsyncThunk(
 			console.log("checkNicknameDuplicate payload =>", payload);
 			const nickname = payload;
 			const response = await axios.post(
-				`${BASE_URL}/api/member/nickname/${nickname}`,
+				`http://3.34.144.42:8080/api/member/nickname/${nickname}`,
 			);
 			console.log("response =>", response);
 			return thunkAPI.fulfillWithValue(response.data);
@@ -76,7 +76,7 @@ export const __checkIdDuplicate = createAsyncThunk(
 			console.log("checkIdDuplicate payload =>", payload);
 			const username = payload;
 			const response = await axios.post(
-				`${BASE_URL}/api/member/id/${username}`,
+				`http://3.34.144.42:8080/api/member/id/${username}`,
 			);
 			console.log("response =>", response);
 			return thunkAPI.fulfillWithValue(response.data);

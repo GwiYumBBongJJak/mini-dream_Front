@@ -1,24 +1,23 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect } from "react";
 import { BoardItem } from "../../components/board";
-import { getBoardListApi } from "../../apis/boardApi";
+import { useDispatch, useSelector } from "react-redux";
+import { __getBoardList } from "../../redux/modules/board/boardSlice";
 
 const BoardListPage = () => {
-	const [boardList, setBoardList] = useState([]);
-
-	const requestUpdate = useCallback(async () => {
-		const response = await getBoardListApi();
-		setBoardList(response);
-	}, []);
+	const dispatch = useDispatch();
 
 	useEffect(() => {
-		requestUpdate();
-	}, [requestUpdate]);
+		dispatch(__getBoardList);
+	}, [dispatch]);
+
+	const boardList = useSelector(state => state.board.BoardItems);
+	console.log(boardList);
 
 	return (
 		<>
-			{boardList.map(boardListItem => (
+			{/* {boardList.map(boardListItem => (
 				<BoardItem key={boardListItem.id} {...boardListItem} />
-			))}
+			))} */}
 		</>
 	);
 };
