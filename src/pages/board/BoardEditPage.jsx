@@ -6,7 +6,6 @@ import {
 	__addBoardItem,
 	__updateBoardItem,
 } from "../../redux/modules/board/boardSlice";
-import { getBoardItemApi } from "../../apis/boardApi";
 
 const BoardEditPage = () => {
 	const dispatch = useDispatch();
