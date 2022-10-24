@@ -60,6 +60,10 @@ const board = createSlice({
 		[__addBoardItem.pending]: (state, action) => {},
 		[__addBoardItem.fulfilled]: (state, action) => {
 			console.log("fullfilled=>", action.payload);
+			if (action.payload.statusCode === 200) {
+				state.statusAlertMessage = action.payload.msg;
+			}
+
 			// state.boardItems.push(action.payload);
 		},
 		[__addBoardItem.rejected]: (state, action) => {

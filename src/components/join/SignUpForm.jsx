@@ -79,8 +79,8 @@ const SignUpForm = () => {
 					{...register("password", {
 						required: "비밀번호는 필수 입력입니다.",
 						// 8 ~ 16자 영문, 숫자, 특수문자를 최소 한가지씩 조합
-						pattern:
-							/^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/,
+						// 	(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])
+						pattern: /^(?=.*[a-zA-z])(?=.*[0-9]).{8,16}$/,
 					})}
 				/>
 				{errors.password && errors.password.type === "required" && (
