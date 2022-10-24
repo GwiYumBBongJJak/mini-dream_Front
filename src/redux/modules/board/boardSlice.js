@@ -5,13 +5,14 @@ const instance = axios.create({
 	baseURL: process.env.REACT_APP_SERVER,
 });
 
-// const BASE_URL = process.env.REACT_APP_SERVER;
-
 export const __addBoardItem = createAsyncThunk(
 	"addBoardItem",
 	async (payload, thunkAPI) => {
 		try {
-			const response = await axios.post(`${BASE_URL}/boardItems`, payload);
+			const response = await axios.post(
+				`http://localhost:3001/boardItems`,
+				payload,
+			);
 			return thunkAPI.fulfillWithValue(response.data);
 		} catch (error) {
 			return thunkAPI.rejectWithValue(error);
