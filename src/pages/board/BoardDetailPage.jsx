@@ -1,10 +1,27 @@
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+// import { useSelector } from "react-redux";
+import { useCallback, useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { getBoardItemApi } from "../../apis/boardApi";
 import { Box, Text, ThirdHeading } from "../../common";
 import { BoardChangeBtns, BoardReactions } from "../../components/board";
 
 const BoardDetailPage = () => {
-	const boardItem = useSelector(state => state.board.boardItem);
+	const [boardItem, setBoardItem] = useState(null);
+	// const boardItem = useSelector(state => state.board.boardItem);
+	const { id } = useParams();
+
+	const requestUpdate = useCallback(async () => {
+		const response = await getBoardItemApi(id);
+		setBoardItem(response);
+	}, [id]);
+
+	useEffect(() => {
+		requestUpdate();
+	}, [requestUpdate]);
+
+	if (!boardItem) {
+		return null;
+	}
 
 	return (
 		<>

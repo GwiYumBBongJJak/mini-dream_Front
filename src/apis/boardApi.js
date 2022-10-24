@@ -9,3 +9,8 @@ export const getBoardListApi = async () => {
 	const response = await axios.get(`http://localhost:3001/boardItems`);
 	return response.data;
 };
+
+export const getBoardItemApi = async id => {
+	const response = await axios.get(`http://localhost:3001/boardItems/${id}`);
+	return response.data;
+};

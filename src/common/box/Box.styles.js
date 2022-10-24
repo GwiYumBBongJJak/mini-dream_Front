@@ -1,3 +1,5 @@
 import styled from "styled-components";
 
-export const Box = styled.div``;
+export const Box = styled.div`
+	background-color: gray;
+`;

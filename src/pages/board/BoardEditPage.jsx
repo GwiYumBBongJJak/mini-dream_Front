@@ -1,8 +1,9 @@
-import { useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Button, Input, TextArea } from "../../common";
 import { useDispatch } from "react-redux";
 import { __addBoardItem } from "../../redux/modules/board/boardSlice";
+import { getBoardItemApi } from "../../apis/boardApi";
 
 const BoardEditPage = () => {
 	const dispatch = useDispatch();
@@ -33,6 +34,17 @@ const BoardEditPage = () => {
 		}
 		navigate("../detail", { replace: true });
 	};
+
+	const requestUpdate = useCallback(async () => {
+		if (isEdit) {
+			const boardItem = await getBoardItemApi(id);
+			setBoardItem(boardItem);
+		}
+	}, [id, isEdit]);
+
+	useEffect(() => {
+		requestUpdate();
+	}, [requestUpdate]);
 
 	return (
 		<>
