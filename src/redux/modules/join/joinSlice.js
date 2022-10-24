@@ -20,6 +20,7 @@ export const __requestSignUp = createAsyncThunk(
 				`${BASE_URL}/api/member/register`,
 				payload,
 			);
+
 			console.log("response =>", response.data);
 
 			return thunkAPI.fulfillWithValue(response.data);
