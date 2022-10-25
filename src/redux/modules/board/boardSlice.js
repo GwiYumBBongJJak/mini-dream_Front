@@ -18,7 +18,7 @@ export const __addBoardItem = createAsyncThunk(
 			// const token = localStorage.getItem("jwtToken");
 			console.log("payload =>", payload);
 			console.log("@@@", localStorage.getItem("jwtToken"));
-			const response = await instance.post(`/auth/boards/create`, payload);
+			const response = await instance.post(`/api/auth/boards/create`, payload);
 
 			console.log("response =>", response);
 			return thunkAPI.fulfillWithValue(response.data);
@@ -84,6 +84,7 @@ export const __getBoardList = createAsyncThunk(
 				// /boards
 			);
 			console.log("response--", response);
+			//! boardId도 같이 받기
 			return thunkAPI.fulfillWithValue(response.data);
 		} catch (error) {
 			return thunkAPI.rejectWithValue(error);
@@ -97,7 +98,7 @@ export const __getBoardItem = createAsyncThunk(
 		try {
 			const response = await axios.get(
 				`http://localhost:3001/boardItems/${payload}`,
-				// /boards/{boardId}
+				// api/boards/{boardId}
 			);
 			return thunkAPI.fulfillWithValue(response.data);
 		} catch (error) {
@@ -164,11 +165,11 @@ const board = createSlice({
 		// __getBoardItem
 		[__getBoardItem.pending]: (state, action) => {},
 		[__getBoardItem.fulfilled]: (state, action) => {
-			console.log("fulfilled=>", action.payload);
+			console.log("__getBoardItem fulfilled=>", action.payload);
 			state.boardItem = action.payload;
 		},
 		[__getBoardItem.rejected]: (state, action) => {
-			console.log("rejected=>", action.payload);
+			console.log("__getBoardItem rejected=>", action.payload);
 		},
 	},
 });

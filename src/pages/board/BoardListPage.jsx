@@ -7,25 +7,21 @@ import { useEffect } from "react";
 const BoardListPage = () => {
 	const dispatch = useDispatch();
 
-	// useEffect(() => {
-	// 	console.log("useEffect--");
-	// 	dispatch(__getBoardList());
-	// 	console.log("dispatch--");
-	// }, [dispatch]);
+	const boardList = useSelector(state => state.board.boardItems);
 
-	// const boardList = useSelector(state => state.board.BoardItems);
-	// console.log(boardList);
+	useEffect(() => {
+		dispatch(__getBoardList());
+	}, [dispatch]);
 
-	// if (boardList === undefined) {
-	// 	return null;
-	// }
-
+	//? key에 무엇을 넣어야 하는가..
 	return (
 		<>
 			<FirstHeading>모아보기</FirstHeading>
-			{/* {boardList.map(boardListItem => (
+			{boardList.map(boardListItem => (
+				// const boardId = boardListItem.boardId
 				<BoardItem key={boardListItem.id} {...boardListItem} />
-			))} */}
+				// <BoardItem key={boardId} {...boardListItem} />
+			))}
 		</>
 	);
 };

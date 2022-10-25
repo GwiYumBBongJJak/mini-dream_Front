@@ -8,7 +8,7 @@ import { FirstHeading } from "../../common";
 const BoardEditPage = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const { id } = useParams;
+	const { id } = useParams();
 	const response = useSelector(state => state.board.boardItem);
 
 	const [boardItem, setBoardItem] = useState(response);
