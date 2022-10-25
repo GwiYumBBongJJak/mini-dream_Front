@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import { Box, Text, ThirdHeading } from "../../common";
 import { BoardChangeBtns, BoardReactions } from "../../components/board";
 import { __getBoardItem } from "../../redux/modules/board/boardSlice";
+import { FirstHeading } from "../../common";
 
 const BoardDetailPage = () => {
 	const dispatch = useDispatch();
@@ -18,6 +19,7 @@ const BoardDetailPage = () => {
 
 	return (
 		<>
+			<FirstHeading>상세 페이지</FirstHeading>
 			<Link to={-1}>뒤로가기</Link>
 			<Box>
 				<ThirdHeading>{boardItem.boardTitle}</ThirdHeading>

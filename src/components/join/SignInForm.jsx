@@ -18,6 +18,7 @@ const SignInForm = () => {
 			onSubmit={handleSubmit(data => {
 				const { id, password } = data;
 				dispatch(__requestSignIn({ password, username: id }));
+				navigate("/board/main");
 			})}
 		>
 			<FirstHeading>LOGIN</FirstHeading>

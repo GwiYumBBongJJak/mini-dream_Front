@@ -24,7 +24,7 @@ export const __addBoardItem = createAsyncThunk(
 			return thunkAPI.fulfillWithValue(response.data);
 		} catch (error) {
 			console.log("error =>", error);
-			return thunkAPI.rejectWithValue(error);
+			return thunkAPI.rejectWithValue(error.response.data);
 		}
 	},
 );

@@ -7,6 +7,7 @@ import {
 	__getBoardItem,
 	__updateBoardItem,
 } from "../../redux/modules/board/boardSlice";
+import { FirstHeading } from "../../common";
 
 const BoardEditPage = () => {
 	const dispatch = useDispatch();
@@ -49,6 +50,7 @@ const BoardEditPage = () => {
 
 	return (
 		<>
+			<FirstHeading>작성하기</FirstHeading>
 			<Link to={-1}>뒤로가기</Link>
 			<form onSubmit={handleOnSubmit}>
 				<Input
