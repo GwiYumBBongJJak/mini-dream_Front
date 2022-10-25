@@ -33,7 +33,6 @@ export const __requestSignIn = createAsyncThunk(
 	async (payload, thunkAPI) => {
 		try {
 			console.log("requestSignIn payload =>", payload);
-			console.log();
 			const response = await axios.post(`${BASE_URL}/member/login`, payload);
 
 			console.log("response =>", response);

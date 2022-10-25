@@ -2,9 +2,10 @@ import { BoardItem } from "../../components/board";
 import { useDispatch, useSelector } from "react-redux";
 import { __getBoardList } from "../../redux/modules/board/boardSlice";
 import { FirstHeading } from "../../common";
+import { useEffect } from "react";
 
 const BoardListPage = () => {
-	// const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
 	useEffect(() => {
 		console.log("useEffect--");
@@ -13,18 +14,18 @@ const BoardListPage = () => {
 	}, [dispatch]);
 
 	const boardList = useSelector(state => state.board.BoardItems);
-	// console.log(boardList);
+	console.log(boardList);
 
-	// if (boardList === undefined) {
-	// 	return null;
-	// }
+	if (boardList === undefined) {
+		return null;
+	}
 
 	return (
 		<>
 			<FirstHeading>모아보기</FirstHeading>
-			{/* {boardList.map(boardListItem => (
+			{boardList.map(boardListItem => (
 				<BoardItem key={boardListItem.id} {...boardListItem} />
-			))} */}
+			))}
 		</>
 	);
 };
