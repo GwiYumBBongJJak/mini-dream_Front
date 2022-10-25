@@ -7,9 +7,6 @@ const BoardLayout = () => {
 	return (
 		<styles.BoardLayout>
 			<BoardNav />
-			<Box>
-				<FirstHeading />
-			</Box>
 			<Outlet></Outlet>
 		</styles.BoardLayout>
 	);

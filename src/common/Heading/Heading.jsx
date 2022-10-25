@@ -1,13 +1,13 @@
 import * as styles from "./Heading.styles";
 
 export const FirstHeading = ({ children, ...props }) => {
-	return <styles.FirstHeading>{children}</styles.FirstHeading>;
+	return <styles.FirstHeading {...props}>{children}</styles.FirstHeading>;
 };
 
 export const SecondHeading = ({ children, ...props }) => {
-	return <styles.SecondHeading>{children}</styles.SecondHeading>;
+	return <styles.SecondHeading {...props}>{children}</styles.SecondHeading>;
 };
 
 export const ThirdHeading = ({ children, ...props }) => {
-	return <styles.ThirdHeading>{children}</styles.ThirdHeading>;
+	return <styles.ThirdHeading {...props}>{children}</styles.ThirdHeading>;
 };

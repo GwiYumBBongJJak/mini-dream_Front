@@ -42,7 +42,7 @@ const SignUpForm = () => {
 						password,
 					);
 					dispatch(__requestSignUp({ nickname, username: id, password }));
-					navigate("/");
+					navigate("/join/sign-in");
 				})}
 			>
 				<FirstHeading>Sign up</FirstHeading>
