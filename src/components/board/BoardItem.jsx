@@ -3,9 +3,11 @@ import { Box, ThirdHeading, Text } from "../../common";
 import BoardReactions from "./BoardReactions";
 
 const BoardItem = props => {
+	console.log("props~~~~", props);
 	const navigate = useNavigate();
 	return (
-		<Box onClick={() => navigate(`../detail/${props.id}`)}>
+		//! id
+		<Box onClick={() => navigate(`../detail/${props.boardId}`)}>
 			{/* <Box onClick={() => navigate(`../detail/${props.boardId}`)}> */}
 			<ThirdHeading>{props.boardTitle}</ThirdHeading>
 			<Text>{props.boardContent}</Text>

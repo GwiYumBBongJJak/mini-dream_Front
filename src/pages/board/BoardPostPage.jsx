@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button, Input, TextArea } from "../../common";
 import { useDispatch } from "react-redux";
 import { __addBoardItem } from "../../redux/modules/board/boardSlice";
@@ -7,6 +7,7 @@ import { FirstHeading } from "../../common";
 
 const BoardPostPage = () => {
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	const init = {
 		boardTitle: "",
@@ -22,8 +23,9 @@ const BoardPostPage = () => {
 
 	const handleOnSubmit = e => {
 		e.preventDefault();
-
 		dispatch(__addBoardItem(boardItem));
+		navigate(`../main`);
+		// navigate(`../detail/`)
 	};
 
 	return (

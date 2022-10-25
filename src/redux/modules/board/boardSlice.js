@@ -7,53 +7,35 @@ const instance = axios.create({
 		Authorization: `${localStorage.getItem("jwtToken")}`,
 	},
 });
-// headers: { Authorization: `${token}` },
-
-// const BASE_URL = process.env.REACT_APP_SERVER;
 
 export const __addBoardItem = createAsyncThunk(
 	"board/addBoardItem",
 	async (payload, thunkAPI) => {
 		try {
-			// const token = localStorage.getItem("jwtToken");
-			console.log("payload =>", payload);
-			console.log("@@@", localStorage.getItem("jwtToken"));
+			console.log("__addBoardItem payload =>", payload);
 			const response = await instance.post(`/api/auth/boards/create`, payload);
-
-			console.log("response =>", response);
+			console.log("__addBoardItem response =>", response);
 			return thunkAPI.fulfillWithValue(response.data);
 		} catch (error) {
-			console.log("error =>", error);
+			console.log("__addBoardItem error =>", error);
 			return thunkAPI.rejectWithValue(error.response.data);
 		}
 	},
 );
 
-// export const __addBoardItem = createAsyncThunk(
-// 	"addBoardItem",
-// 	async (payload, thunkAPI) => {
-// 		try {
-// 			// const response = await axios.post(
-// 			// 	`http://localhost:3001/boardItems`,
-// 			const response = await instance.post(`/auth/boards/create`, payload);
-// 			return thunkAPI.fulfillWithValue(response.data);
-// 		} catch (error) {
-// 			return thunkAPI.rejectWithValue(error);
-// 		}
-// 	},
-// );
-
 export const __updateBoardItem = createAsyncThunk(
 	"updateBoardItem",
 	async (payload, thunkAPI) => {
 		try {
-			const response = await axios.put(
-				`http://localhost:3001/boardItems/${payload.id}`,
-				// /auth/boards/modify
+			console.log("__updateBoardItem payload =>", payload);
+			const response = await instance.put(
+				`/api/auth/boards/update/${payload.id}`,
 				payload,
 			);
+			console.log("__updateBoardItem response =>", response);
 			return thunkAPI.fulfillWithValue(response.data);
 		} catch (error) {
+			console.log("__updateBoardItem error =>", error);
 			return thunkAPI.rejectWithValue(error);
 		}
 	},
@@ -63,12 +45,14 @@ export const __delBoardItem = createAsyncThunk(
 	"deleteBoardItem",
 	async (payload, thunkAPI) => {
 		try {
-			const response = await axios.delete(
-				`http://localhost:3001/boardItems/${payload}`,
-				// /auth/boards/delete
+			console.log("__delBoardItem payload =>", payload);
+			const response = await instance.delete(
+				`/api/auth/boards/delete/${payload}`,
 			);
+			console.log("__delBoardItem response =>", response);
 			return thunkAPI.fulfillWithValue(response.data);
 		} catch (error) {
+			console.log("__delBoardItem error =>", error);
 			return thunkAPI.rejectWithValue(error);
 		}
 	},
@@ -78,15 +62,11 @@ export const __getBoardList = createAsyncThunk(
 	"getBoardList",
 	async (_, thunkAPI) => {
 		try {
-			console.log("thunk");
-			const response = await axios.get(
-				`http://localhost:3001/boardItems`,
-				// /boards
-			);
-			console.log("response--", response);
-			//! boardId도 같이 받기
-			return thunkAPI.fulfillWithValue(response.data);
+			const response = await instance.get(`/api/boards`);
+			console.log("__getBoardList response =>", response);
+			return thunkAPI.fulfillWithValue(response.data.boardResponseDtos);
 		} catch (error) {
+			console.log("__getBoardList error =>", error);
 			return thunkAPI.rejectWithValue(error);
 		}
 	},
@@ -96,12 +76,12 @@ export const __getBoardItem = createAsyncThunk(
 	"getBoardItem",
 	async (payload, thunkAPI) => {
 		try {
-			const response = await axios.get(
-				`http://localhost:3001/boardItems/${payload}`,
-				// api/boards/{boardId}
-			);
+			console.log("__delBoardItem payload =>", payload);
+			const response = await instance.get(`/api/auth/boards/${payload}`);
+			console.log("__getBoardItem response =>", response);
 			return thunkAPI.fulfillWithValue(response.data);
 		} catch (error) {
+			console.log("__getBoardItem error =>", error);
 			return thunkAPI.rejectWithValue(error);
 		}
 	},
@@ -125,22 +105,18 @@ const board = createSlice({
 		[__addBoardItem.fulfilled]: (state, action) => {
 			console.log("addBoardItem fullfilled=>", action.payload);
 			// state.boardItems.push(action.payload);
-			if (action.payload.statusCode === 200) {
-				state.statusAlertMessage = action.payload.msg;
-			}
 		},
 		[__addBoardItem.rejected]: (state, action) => {
 			console.log("addBoardItem rejected=>", action.payload);
-			state.error = action.payload;
 		},
 
 		// __updateBoardItem
 		[__updateBoardItem.pending]: (state, action) => {},
 		[__updateBoardItem.fulfilled]: (state, action) => {
-			console.log("fulfilled=>", action.payload);
+			console.log("__updateBoardItem fulfilled=>", action.payload);
 		},
 		[__updateBoardItem.rejected]: (state, action) => {
-			console.log("rejected=>", action.payload);
+			console.log("__updateBoardItem rejected=>", action.payload);
 		},
 
 		// __delBoardItem

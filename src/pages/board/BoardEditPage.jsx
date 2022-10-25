@@ -21,6 +21,7 @@ const BoardEditPage = () => {
 	const handleOnSubmit = e => {
 		e.preventDefault();
 		dispatch(__updateBoardItem(boardItem));
+		alert("등록되었습니다.");
 		navigate(`../detail/${id}`);
 	};
 
