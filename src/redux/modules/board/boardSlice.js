@@ -1,24 +1,24 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// const instance = axios.create({
-// 	baseURL: process.env.REACT_APP_SERVER,
-// 	headers: {
-// 		Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
-// 	},
-// });
+const instance = axios.create({
+	baseURL: process.env.REACT_APP_SERVER,
+	headers: {
+		Authorization: `${localStorage.getItem("jwtToken")}`,
+	},
+});
+// headers: { Authorization: `${token}` },
 
-const BASE_URL = process.env.REACT_APP_SERVER;
+// const BASE_URL = process.env.REACT_APP_SERVER;
 
 export const __addBoardItem = createAsyncThunk(
 	"board/addBoardItem",
 	async (payload, thunkAPI) => {
 		try {
+			// const token = localStorage.getItem("jwtToken");
 			console.log("payload =>", payload);
-			const response = await axios.post(
-				`${BASE_URL}/auth/boards/create`,
-				payload,
-			);
+			console.log("@@@", localStorage.getItem("jwtToken"));
+			const response = await instance.post(`/auth/boards/create`, payload);
 
 			console.log("response =>", response);
 			return thunkAPI.fulfillWithValue(response.data);

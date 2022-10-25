@@ -1,17 +1,19 @@
 import { useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Button, Input, TextArea } from "../../common";
-import { useDispatch, useSelector } from "react-redux";
-import { __updateBoardItem } from "../../redux/modules/board/boardSlice";
+import { useDispatch } from "react-redux";
+import { __addBoardItem } from "../../redux/modules/board/boardSlice";
 import { FirstHeading } from "../../common";
 
-const BoardEditPage = () => {
+const BoardPostPage = () => {
 	const dispatch = useDispatch();
-	const navigate = useNavigate();
-	const { id } = useParams;
-	const response = useSelector(state => state.board.boardItem);
 
-	const [boardItem, setBoardItem] = useState(response);
+	const init = {
+		boardTitle: "",
+		boardContent: "",
+	};
+
+	const [boardItem, setBoardItem] = useState(init);
 
 	const handleOnChange = e => {
 		const { name, value } = e.target;
@@ -20,8 +22,8 @@ const BoardEditPage = () => {
 
 	const handleOnSubmit = e => {
 		e.preventDefault();
-		dispatch(__updateBoardItem(boardItem));
-		navigate(`../detail/${id}`);
+
+		dispatch(__addBoardItem(boardItem));
 	};
 
 	return (
@@ -45,4 +47,4 @@ const BoardEditPage = () => {
 	);
 };
 
-export default BoardEditPage;
+export default BoardPostPage;

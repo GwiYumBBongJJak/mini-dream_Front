@@ -1,7 +1,10 @@
 import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { Text } from "../../common";
-import { __delBoardItem } from "../../redux/modules/board/boardSlice";
+import {
+	__delBoardItem,
+	__getBoardItem,
+} from "../../redux/modules/board/boardSlice";
 
 const BoardChangeBtns = () => {
 	const navigate = useNavigate();
@@ -9,6 +12,7 @@ const BoardChangeBtns = () => {
 	const { id } = useParams();
 
 	const handleUpdate = () => {
+		dispatch(__getBoardItem(id));
 		navigate(`../edit/${id}`);
 	};
 

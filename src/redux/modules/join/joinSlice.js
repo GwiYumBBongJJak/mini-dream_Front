@@ -16,7 +16,10 @@ export const __requestSignUp = createAsyncThunk(
 	async (payload, thunkAPI) => {
 		try {
 			console.log("requestSignUp payload =>", payload);
-			const response = await axios.post(`${BASE_URL}/member/register`, payload);
+			const response = await axios.post(
+				`http://54.180.79.123:8080/member/register`,
+				payload,
+			);
 
 			console.log("response =>", response.data);
 
@@ -33,6 +36,7 @@ export const __requestSignIn = createAsyncThunk(
 	async (payload, thunkAPI) => {
 		try {
 			console.log("requestSignIn payload =>", payload);
+			console.log();
 			const response = await axios.post(`${BASE_URL}/member/login`, payload);
 
 			console.log("response =>", response);

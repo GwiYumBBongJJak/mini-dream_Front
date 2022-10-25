@@ -1,5 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { BoardDetailPage, BoardEditPage, BoardListPage } from "../pages/board";
+import {
+	BoardDetailPage,
+	BoardEditPage,
+	BoardListPage,
+	BoardPostPage,
+} from "../pages/board";
 import { SignUpPage, SignInPage } from "../pages/join";
 import { RendingPage } from "../pages/rending";
 import BoardLayout from "../layout/board";
@@ -17,7 +22,7 @@ const Router = () => {
 				<Route path="/board" element={<BoardLayout />}>
 					<Route path="main" element={<BoardListPage />} />
 					<Route path="detail/:id" element={<BoardDetailPage />} />
-					<Route path="edit" element={<BoardEditPage />} />
+					<Route path="edit" element={<BoardPostPage />} />
 					<Route path="edit/:id" element={<BoardEditPage />} />
 				</Route>
 			</Routes>
