@@ -6,10 +6,9 @@ import { __getUserInfo } from "../../redux/modules/join/joinSlice";
 import { setLogout } from "../../redux/modules/join/joinSlice";
 
 const BoardNav = () => {
-	const { isLogin, isLoading } = useSelector(state => state.join);
-	console.log("isLogin => ", isLogin);
+	const { isLogin, nickname } = useSelector(state => state.join);
+	console.log("isLogin => ", isLogin, "nickname =>", nickname);
 	const location = useLocation();
-	console.log("location =>", location.pathname);
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 

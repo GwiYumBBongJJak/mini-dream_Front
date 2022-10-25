@@ -1,8 +1,9 @@
 import { Form, Input, Button, FirstHeading } from "../../common";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { __requestSignIn } from "../../redux/modules/join/joinSlice";
+import { useEffect } from "react";
 
 const SignInForm = () => {
 	const dispatch = useDispatch();
@@ -13,12 +14,24 @@ const SignInForm = () => {
 		formState: { errors },
 	} = useForm();
 
+	const { statusMessage, statusCode } = useSelector(state => state.join);
+	console.log("statusCode =>", statusCode, "statusMessage =>", statusMessage);
+
+	useEffect(() => {
+		// statusCode 가 202일 경우 회원가입 완료 alert과 함께 navigate하도록
+		// 400인 경우는 alert창만 띄우도록
+		if (statusCode === 400) {
+			alert(statusMessage);
+		} else {
+			// navigate("/board/main");
+		}
+	}, [statusMessage, statusCode]);
+
 	return (
 		<Form
 			onSubmit={handleSubmit(data => {
 				const { id, password } = data;
 				dispatch(__requestSignIn({ password, username: id }));
-				navigate("/board/main");
 			})}
 		>
 			<FirstHeading>LOGIN</FirstHeading>
