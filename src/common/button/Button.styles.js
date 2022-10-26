@@ -127,6 +127,30 @@ export const Button = styled.button`
 					left: 86px;
 					font-size: 17px;
 				`;
+			case "lucky":
+				return css`
+					background-color: greenyellow;
+					background-image: url("../../../public/images/lucky.png");
+					background-size: cover;
+					width: 23px;
+					height: 23px;
+				`;
+			case "sad":
+				return css`
+					background-color: skyblue;
+					background-image: url("../../../public/images/sad.png");
+					background-size: cover;
+					width: 23px;
+					height: 23px;
+				`;
+			case "horror":
+				return css`
+					background-color: salmon;
+					background-image: url("../../../public/images/horror.png");
+					background-size: cover;
+					width: 23px;
+					height: 23px;
+				`;
 			default:
 				break;
 		}

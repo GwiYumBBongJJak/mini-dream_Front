@@ -8,4 +8,7 @@ export const Flex = styled.div`
 	height: ${({ height }) => (height ? height : "")};
 	width: ${({ width }) => (width ? width : "")};
 	gap: ${({ gap }) => (gap ? gap : "")};
+	background-color: ${({ bgColor }) => (bgColor ? bgColor : "")};
+	border-radius: ${({ radius }) => (radius ? radius : "")};
+	padding: ${({ padding }) => (padding ? padding : "")};
 `;

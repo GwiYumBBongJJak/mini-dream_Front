@@ -23,6 +23,24 @@ export const Text = styled.p`
 					letter-spacing: 0.06em;
 					position: relative;
 				`;
+			case "lucky":
+				return css`
+					color: #4fbe94;
+					font-weight: 600;
+					font-size: 20px;
+				`;
+			case "sad":
+				return css`
+					color: #80bfff;
+					font-weight: 600;
+					font-size: 20px;
+				`;
+			case "horror":
+				return css`
+					color: #d4d4d4;
+					font-weight: 600;
+					font-size: 20px;
+				`;
 			default:
 				break;
 		}
