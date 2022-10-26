@@ -1,4 +1,4 @@
-import { Nav, Flex, SecondHeading, Button } from "../../common";
+import { Nav, Flex, SecondHeading, Button, Margin } from "../../common";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
@@ -21,40 +21,44 @@ const BoardNav = () => {
 	}, [dispatch, user]);
 
 	return (
-		<Nav>
-			<Flex align="spaceBetween">
-				<SecondHeading onClick={() => navigate("/")}>解夢</SecondHeading>
-				<Flex>
-					{isLogin ? (
-						<Button
-							color="white"
-							fontSize="big"
-							onClick={() => {
-								localStorage.removeItem("jwtToken");
-								dispatch(setLogout());
-								navigate("/");
-							}}
-						>
-							logout
-						</Button>
-					) : (
-						<Button onClick={() => navigate("/join/sign-in")}>login</Button>
-					)}
-					{/* 상세페이지일 경우 글쓰기 버튼이 보이지 않도록 처리 */}
-					{location.pathname !== "/board/edit" && isLogin ? (
-						<Button
-							color="white"
-							fontSize="big"
-							onClick={() => navigate("/board/edit")}
-						>
-							글쓰기
-						</Button>
-					) : (
-						""
-					)}
+		<Flex width="100%" ai="center">
+			<Nav>
+				<Flex jc="space-between">
+					<SecondHeading onClick={() => navigate("/")}>解夢</SecondHeading>
+					<Flex>
+						{isLogin ? (
+							<Button
+								color="white"
+								fontSize="big"
+								onClick={() => {
+									localStorage.removeItem("jwtToken");
+									dispatch(setLogout());
+									navigate("/");
+								}}
+							>
+								logout
+							</Button>
+						) : (
+							<Button onClick={() => navigate("/join/sign-in")}>login</Button>
+						)}
+						{/* 상세페이지일 경우 글쓰기 버튼이 보이지 않도록 처리 */}
+						{location.pathname !== "/board/edit" && isLogin ? (
+							<Margin margin="40px">
+								<Button
+									color="white"
+									fontSize="big"
+									onClick={() => navigate("/board/edit")}
+								>
+									글쓰기
+								</Button>
+							</Margin>
+						) : (
+							""
+						)}
+					</Flex>
 				</Flex>
-			</Flex>
-		</Nav>
+			</Nav>
+		</Flex>
 	);
 };
 

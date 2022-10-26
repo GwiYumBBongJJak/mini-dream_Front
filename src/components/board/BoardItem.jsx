@@ -5,7 +5,10 @@ import BoardReactions from "./BoardReactions";
 const BoardItem = props => {
 	const navigate = useNavigate();
 	return (
-		<Box onClick={() => navigate(`../detail/${props.boardId}`)}>
+		<Box
+			variant="boardItem"
+			onClick={() => navigate(`../detail/${props.boardId}`)}
+		>
 			<ThirdHeading>{props.boardTitle}</ThirdHeading>
 			<Text>{props.nickname}</Text>
 			<BoardReactions />
