@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const Text = styled.p`
+	width: ${({ width }) => (width ? width : "")};
+	height: ${({ height }) => (height ? height : "")};
 	display: ${({ dp }) => (dp ? dp : "")};
 	color: ${({ color }) => (color ? color : "")};
 	font-size: ${({ fs }) => (fs ? fs : "")};
