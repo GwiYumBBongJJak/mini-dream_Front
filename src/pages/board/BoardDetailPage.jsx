@@ -22,13 +22,12 @@ const BoardDetailPage = () => {
 	const boardItem = useSelector(state => state.board.boardItem);
 	const { isCommentChange } = useSelector(state => state.comment);
 
-	// 댓글 수정시 자동 렌더링
 	useEffect(() => {
 		dispatch(__getBoardItem(id));
 		if (isCommentChange) dispatch(__getBoardItem(id));
 	}, [isCommentChange, id, dispatch]);
 
-	// comment 기능
+	// comment
 	const [commentValue, setCommentValue] = useState({
 		boardId: id,
 		comment: "",
