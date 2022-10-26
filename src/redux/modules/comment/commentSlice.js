@@ -8,7 +8,7 @@ const initialState = {
 	statusCode: null,
 	statusMessage: null,
 	commentAvailability: null,
-	isCommentChange: null,
+	isCommentChange: false,
 };
 
 // 댓글 추가
@@ -135,7 +135,7 @@ const commentSlice = createSlice({
 			state.isLoading = false;
 			state.statusMessage = action.payload.msg;
 			state.statusCode = action.payload.statusCode;
-			state.isCommentChange = true;
+			state.isCommentChange = !state.isCommentChange;
 		},
 		[__addComment.rejected]: (state, action) => {
 			console.log("__addComment.rejected =>", action.payload);
@@ -168,7 +168,7 @@ const commentSlice = createSlice({
 			state.isLoading = false;
 			state.statusMessage = action.payload.msg;
 			state.statusCode = action.payload.statusCode;
-			state.isCommentChange = true;
+			state.isCommentChange = !state.isCommentChange;
 		},
 		[__deleteComment.rejected]: (state, action) => {
 			console.log("__deleteComment.rejected =>", action.payload);
@@ -184,7 +184,7 @@ const commentSlice = createSlice({
 		[__editComment.fulfilled]: (state, action) => {
 			console.log("__editComment.fulfilled =>", action.payload);
 			state.isLoading = false;
-			state.isCommentChange = true;
+			state.isCommentChange = !state.isCommentChange;
 		},
 		[__editComment.rejected]: (state, action) => {
 			console.log("__editComment.rejected =>", action.payload);
