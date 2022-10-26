@@ -17,17 +17,12 @@ const BoardListPage = () => {
 
 	return (
 		<>
-<<<<<<< HEAD
 			<Header>
 				<Flex align="center">
 					<FirstHeading>모아보기</FirstHeading>
 				</Flex>
 			</Header>
-			{boardList.map(boardListItem => (
-=======
-			<FirstHeading>모아보기</FirstHeading>
 			{boardItems.map(boardListItem => (
->>>>>>> 889ffca97c9cc4f0bafe18845cd69652364c0854
 				<BoardItem key={boardListItem.boardId} {...boardListItem} />
 			))}
 		</>
