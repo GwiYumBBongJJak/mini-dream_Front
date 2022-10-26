@@ -54,6 +54,13 @@ export const Box = styled.div`
 					justify-items: center;
 					justify-content: center;
 				`;
+			case "edit-box":
+				return css`
+					width: 800px;
+					height: 100vh;
+					margin: 0 auto;
+					background-color: aliceblue;
+				`;
 			default:
 				break;
 		}
