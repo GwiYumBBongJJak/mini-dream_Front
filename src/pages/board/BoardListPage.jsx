@@ -19,8 +19,8 @@ const BoardListPage = () => {
 		<>
 			<Header>
 				<Flex jc="center" ai="center" height="100%">
-					<FirstHeading color="white" fs="38px" fw="600">
-						꿈을 Dream
+					<FirstHeading color="white" fs="38px" fw="600" ls="0.05em">
+						Dream Repository
 					</FirstHeading>
 				</Flex>
 			</Header>

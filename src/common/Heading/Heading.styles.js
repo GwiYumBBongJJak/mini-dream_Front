@@ -6,12 +6,15 @@ export const FirstHeading = styled.h1`
 	text-align: ${({ ta }) => (ta ? ta : "")};
 	letter-spacing: ${({ ls }) => (ls ? ls : "")};
 	text-transform: ${({ tt }) => (tt ? tt : "")};
+	font-weight: ${({ fw }) => (fw ? fw : "")};
 `;
 export const SecondHeading = styled.h2`
 	color: ${({ color }) => (color ? color : "")};
 	font-size: ${({ fs }) => (fs ? fs : "")};
 	text-align: ${({ ta }) => (ta ? ta : "")};
 	letter-spacing: ${({ ls }) => (ls ? ls : "")};
+	text-transform: ${({ tt }) => (tt ? tt : "")};
+	font-weight: ${({ fw }) => (fw ? fw : "")};
 
 	${({ variant }) => {
 		switch (variant) {
@@ -35,4 +38,6 @@ export const ThirdHeading = styled.h3`
 	font-size: ${({ fs }) => (fs ? fs : "")};
 	text-align: ${({ ta }) => (ta ? ta : "")};
 	letter-spacing: ${({ ls }) => (ls ? ls : "")};
+	text-transform: ${({ tt }) => (tt ? tt : "")};
+	font-weight: ${({ fw }) => (fw ? fw : "")};
 `;

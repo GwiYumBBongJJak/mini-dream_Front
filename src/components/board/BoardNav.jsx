@@ -60,7 +60,7 @@ const BoardNav = () => {
 									fontSize="big"
 									onClick={() => navigate("/board/edit")}
 								>
-									글쓰기
+									Commit
 								</Button>
 							) : (
 								""
