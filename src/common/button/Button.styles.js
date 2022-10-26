@@ -122,9 +122,10 @@ export const Button = styled.button`
 		switch (variant) {
 			case "back-button":
 				return css`
-					position: absolute;
+					/* position: absolute;
 					top: 26px;
-					left: 86px;
+					left: 306px; */
+					width: 70px;
 					font-size: 17px;
 				`;
 			default:

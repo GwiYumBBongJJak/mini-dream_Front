@@ -7,7 +7,7 @@ const RendingContent = () => {
 		<Flex jc="center" ai="center" width="100%" height="100%">
 			<Flex fd="column" jc="center" ai="center" width="100%" height="100%">
 				<Box variant={"lending"}>
-					<Margin margin="0 0 50px 20px">
+					<Margin margin="0 0 40px 20px">
 						<FirstHeading color="#ffffff" fs="85px" ls="0.1em" ta="center">
 							解夢:
 							<Margin dp="inline-block" margin="0 0 0 20px">

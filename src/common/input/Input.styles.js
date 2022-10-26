@@ -9,7 +9,7 @@ export const Input = styled.input`
 	padding: 15px;
 	color: #42364b;
 	::placeholder {
-		color: #877E8D
+		color: #877e8d;
 		font-size: 18px;
 	}
 
