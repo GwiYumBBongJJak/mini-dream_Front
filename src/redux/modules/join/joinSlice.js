@@ -37,7 +37,6 @@ export const __requestSignIn = createAsyncThunk(
 			console.log("requestSignIn payload =>", payload);
 			console.log();
 			const response = await axios.post(`${BASE_URL}/member/login`, payload);
-			// const response = await axios.post(`${BASE_URL}/member/login`, payload);
 
 			console.log("requestSignIn response =>", response);
 
@@ -113,6 +112,7 @@ const joinSlice = createSlice({
 			state.statusCode = null;
 		},
 	},
+
 	extraReducers: {
 		// 닉네임 확인
 		[__checkNicknameDuplicate.pending]: (state, _) => {
