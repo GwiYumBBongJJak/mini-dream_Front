@@ -41,6 +41,26 @@ export const __addComment = createAsyncThunk(
 // 댓글 수정 권한 확인
 export const __checkCommentAvailability = createAsyncThunk(
 	"comment/checkCommentAvailability",
+	async (payload, thunkAPI) => {
+		try {
+			const { commentId } = payload;
+			console.log("checkCommentAvailabilty payload => ", payload);
+			const token = localStorage.getItem("jwtToken");
+			console.log(token);
+			const response = await axios.get(
+				`${BASE_URL}/auth/comments/${commentId}/isUpdate`,
+				{
+					headers: { Authorization: `${token}` },
+				},
+			);
+			console.log("checkCommentAvailability response =>", response);
+			return thunkAPI.fulfillWithValue(response.data);
+		} catch (error) {
+			console.log("checkCommentAvailability error =>", error);
+
+			return thunkAPI.rejectWithValue(error.response.data);
+		}
+	},
 );
 
 // 댓글 삭제
@@ -101,6 +121,23 @@ const commentSlice = createSlice({
 		},
 		[__addComment.rejected]: (state, action) => {
 			console.log("__addComment.rejected =>", action.payload);
+			state.isLoading = false;
+			state.statusMessage = action.payload.msg;
+			state.statusCode = action.payload.statusCode;
+		},
+		// 댓글 수정 권한 확인
+		[__checkCommentAvailability.pending]: (state, _) => {
+			console.log("__deleteComment.pending");
+			state.isLoading = true;
+		},
+		[__checkCommentAvailability.fulfilled]: (state, action) => {
+			console.log("__deleteComment.fulfilled =>", action.payload);
+			state.isLoading = false;
+			state.statusMessage = action.payload.msg;
+			state.statusCode = action.payload.statusCode;
+		},
+		[__checkCommentAvailability.rejected]: (state, action) => {
+			console.log("__deleteComment.rejected =>", action.payload);
 			state.isLoading = false;
 			state.statusMessage = action.payload.msg;
 			state.statusCode = action.payload.statusCode;
