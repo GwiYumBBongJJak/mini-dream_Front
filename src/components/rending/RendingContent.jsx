@@ -8,12 +8,12 @@ const RendingContent = () => {
 			<Flex fd="column" jc="center" ai="center" width="100%" height="100%">
 				<Box variant={"lending"}>
 					<Margin margin="0 0 50px 20px">
-						<FirstHeading color="#ffffff" fs="105px" ls="0.1em" ta="center">
+						<FirstHeading color="#ffffff" fs="85px" ls="0.1em" ta="center">
 							解夢:
-							<Margin dp="inline-block" margin="0 0 10px 20px">
+							<Margin dp="inline-block" margin="0 0 0 20px">
 								<Text
 									fw="600"
-									fs="48px"
+									fs="40px"
 									dp="inline-block"
 									color="#ffffff"
 									ls="0.2em"
@@ -30,7 +30,7 @@ const RendingContent = () => {
 							무엇을 알려주고 있을까요?
 						</Flex>
 					</Box>
-					<Margin margin="70px 0 0 0">
+					<Margin margin="60px 0 0 0">
 						<Flex jc="center" ai="center">
 							<Margin margin="0 45px 0 0">
 								<Button
