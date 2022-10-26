@@ -56,12 +56,13 @@ const BoardEditPage = () => {
 			</Link>
 			<form onSubmit={handleOnSubmit}>
 				<Input
+					theme="post"
 					name="boardTitle"
 					value={boardItem.boardTitle}
 					onChange={handleOnChange}
 				/>
 				<Button
-					size="small"
+					size="big"
 					bgColor="lightPurple"
 					radius="true"
 					color="white"

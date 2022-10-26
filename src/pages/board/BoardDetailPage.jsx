@@ -66,6 +66,7 @@ const BoardDetailPage = () => {
 				</dl>
 				<Box>
 					<Input
+						theme="comment"
 						onChange={e => {
 							setCommentValue(prevState => {
 								return {
