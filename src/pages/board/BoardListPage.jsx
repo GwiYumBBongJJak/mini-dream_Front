@@ -7,11 +7,15 @@ import { useEffect } from "react";
 const BoardListPage = () => {
 	const dispatch = useDispatch();
 
+	// 이렇게 하면 괜찮고 비구조화할당 하면 안되는 이유?
 	const boardList = useSelector(state => state.board.boardItems);
+	const { isBoardChange } = useSelector(state => state.board);
+	console.log("isBoard =>", isBoardChange);
 
 	useEffect(() => {
 		dispatch(__getBoardList());
-	}, [dispatch]);
+		if (isBoardChange) dispatch(__getBoardList());
+	}, [dispatch, isBoardChange]);
 
 	return (
 		<>
