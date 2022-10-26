@@ -7,17 +7,17 @@ import { useEffect } from "react";
 const BoardListPage = () => {
 	const dispatch = useDispatch();
 
-	// const boardList = useSelector(state => state.board.boardItems);
-	// useEffect(() => {
-	// 	dispatch(__getBoardList());
-	// }, [dispatch]);
+	const boardList = useSelector(state => state.board.boardItems);
+	useEffect(() => {
+		dispatch(__getBoardList());
+	}, [dispatch]);
 
 	return (
 		<>
 			<FirstHeading>모아보기</FirstHeading>
-			{/* {boardList.map(boardListItem => (
+			{boardList.map(boardListItem => (
 				<BoardItem key={boardListItem.boardId} {...boardListItem} />
-			))} */}
+			))}
 		</>
 	);
 };
