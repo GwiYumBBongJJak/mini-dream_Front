@@ -30,7 +30,7 @@ const BoardNav = () => {
 						</SecondHeading>
 						<Box>
 							{isLogin ? (
-								<Margin dp="inline-block" margin="0 40px 0 0">
+								<Margin dp="inline-block" margin="0 30px 0 0">
 									{" "}
 									<Button
 										color="white"
@@ -60,7 +60,7 @@ const BoardNav = () => {
 									fontSize="big"
 									onClick={() => navigate("/board/edit")}
 								>
-									글쓰기
+									Commit
 								</Button>
 							) : (
 								""

@@ -46,8 +46,8 @@ const BoardDetailPage = () => {
 		<>
 			<Header>
 				<Flex jc="center" ai="center" height="100%">
-					<FirstHeading color="white" fs="38px">
-						상세페이지
+					<FirstHeading color="white" fs="38px" ls="0.1em" tt="uppercase">
+						Detail
 					</FirstHeading>
 				</Flex>
 			</Header>

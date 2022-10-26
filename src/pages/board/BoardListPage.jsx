@@ -19,19 +19,17 @@ const BoardListPage = () => {
 		<>
 			<Header>
 				<Flex jc="center" ai="center" height="100%">
-					<FirstHeading color="white" fs="38px" fw="600">
-						모아보기
+					<FirstHeading color="white" fs="38px" fw="600" ls="0.05em">
+						Dream Repository
 					</FirstHeading>
 				</Flex>
 			</Header>
-			<Margin margin="45px 0">
-				<Flex jc="center">
-					<Box>
-						{boardItems.map(boardListItem => (
-							<BoardItem key={boardListItem.boardId} {...boardListItem} />
-						))}
-					</Box>
-				</Flex>
+			<Margin margin="55px 0">
+				<Box variant="main-list">
+					{boardItems.map(boardListItem => (
+						<BoardItem key={boardListItem.boardId} {...boardListItem} />
+					))}
+				</Box>
 			</Margin>
 		</>
 	);

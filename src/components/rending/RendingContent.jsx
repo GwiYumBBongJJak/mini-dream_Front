@@ -25,7 +25,7 @@ const RendingContent = () => {
 					</Margin>
 					<Box variant={"lending-title"}>
 						<Flex fd="column" ai="center">
-							<Text> Dream your dream,</Text> <br />
+							<Text>Commit Your Dream,</Text> <br />
 							당신의 어젯밤 꿈은 <br />
 							무엇을 알려주고 있을까요?
 						</Flex>
