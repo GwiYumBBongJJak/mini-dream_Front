@@ -9,11 +9,10 @@ import { SignUpPage, SignInPage } from "../pages/join";
 import { RendingPage } from "../pages/rending";
 import BoardLayout from "../layout/board";
 import JoinLayout from "../layout/join";
-// import GlobalStyles from "../GlobalStyles";
+
 const Router = () => {
 	return (
 		<>
-			{/* <GlobalStyles /> */}
 			<BrowserRouter>
 				<Routes>
 					<Route path="/" element={<RendingPage />} />

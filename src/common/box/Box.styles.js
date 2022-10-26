@@ -7,7 +7,6 @@ export const Box = styled.div`
 				return css`
 					width: 540px;
 					height: 430px;
-					background-color: aliceblue;
 				`;
 			default:
 				break;

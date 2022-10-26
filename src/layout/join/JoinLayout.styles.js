@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-export const JoinLayout = styled.section`
-	background-image: url("images/dream.jpg");
+export const JoinLayout = styled.div`
+	background-image: url("/images/dream.jpg");
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;
