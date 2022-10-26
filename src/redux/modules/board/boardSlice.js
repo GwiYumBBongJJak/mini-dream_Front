@@ -13,7 +13,7 @@ export const __addBoardItem = createAsyncThunk(
 	async (payload, thunkAPI) => {
 		try {
 			console.log("__addBoardItem payload =>", payload);
-			const response = await instance.post(`/api/auth/boards/create`, payload);
+			const response = await instance.post(`/auth/boards/create`, payload);
 			console.log("__addBoardItem response =>", response);
 			return thunkAPI.fulfillWithValue(response.data);
 		} catch (error) {
@@ -29,7 +29,7 @@ export const __updateBoardItem = createAsyncThunk(
 		try {
 			console.log("__updateBoardItem payload =>", payload);
 			const response = await instance.put(
-				`/api/auth/boards/update/${payload.id}`,
+				`/auth/boards/modify/${payload.boardId}`,
 				payload,
 			);
 			console.log("__updateBoardItem response =>", response);
@@ -46,9 +46,7 @@ export const __delBoardItem = createAsyncThunk(
 	async (payload, thunkAPI) => {
 		try {
 			console.log("__delBoardItem payload =>", payload);
-			const response = await instance.delete(
-				`/api/auth/boards/delete/${payload}`,
-			);
+			const response = await instance.delete(`/auth/boards/delete/${payload}`);
 			console.log("__delBoardItem response =>", response);
 			return thunkAPI.fulfillWithValue(response.data);
 		} catch (error) {
@@ -62,7 +60,7 @@ export const __getBoardList = createAsyncThunk(
 	"getBoardList",
 	async (_, thunkAPI) => {
 		try {
-			const response = await instance.get(`/api/boards`);
+			const response = await instance.get(`/boards`);
 			console.log("__getBoardList response =>", response);
 			return thunkAPI.fulfillWithValue(response.data.boardResponseDtos);
 		} catch (error) {
@@ -76,8 +74,8 @@ export const __getBoardItem = createAsyncThunk(
 	"getBoardItem",
 	async (payload, thunkAPI) => {
 		try {
-			console.log("__delBoardItem payload =>", payload);
-			const response = await instance.get(`/api/auth/boards/${payload}`);
+			console.log("__getBoardItem payload =>", payload);
+			const response = await instance.get(`/boards/${payload}`);
 			console.log("__getBoardItem response =>", response);
 			return thunkAPI.fulfillWithValue(response.data);
 		} catch (error) {
@@ -122,20 +120,20 @@ const board = createSlice({
 		// __delBoardItem
 		[__delBoardItem.pending]: (state, action) => {},
 		[__delBoardItem.fulfilled]: (state, action) => {
-			console.log("fulfilled=>", action.payload);
+			console.log("__delBoardItem fulfilled=>", action.payload);
 		},
 		[__delBoardItem.rejected]: (state, action) => {
-			console.log("rejected=>", action.payload);
+			console.log("__delBoardItem rejected=>", action.payload);
 		},
 
 		// __getBoardList
 		[__getBoardList.pending]: (state, action) => {},
 		[__getBoardList.fulfilled]: (state, action) => {
-			console.log("fulfilled=>", action.payload);
+			console.log("__getBoardListfulfilled=>", action.payload);
 			state.boardItems = action.payload;
 		},
 		[__getBoardList.rejected]: (state, action) => {
-			console.log("rejected=>", action.payload);
+			console.log("__getBoardListrejected=>", action.payload);
 		},
 
 		// __getBoardItem

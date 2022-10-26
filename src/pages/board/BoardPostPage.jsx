@@ -38,7 +38,7 @@ const BoardPostPage = () => {
 					value={boardItem.boardTitle}
 					onChange={handleOnChange}
 				/>
-				<Button>등록</Button>
+				<Button size="big">등록</Button>
 				<TextArea
 					name="boardContent"
 					value={boardItem.boardContent}
