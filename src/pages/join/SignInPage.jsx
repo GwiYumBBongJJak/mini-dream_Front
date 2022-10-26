@@ -6,7 +6,9 @@ const SignInPage = () => {
 	const navigate = useNavigate();
 	return (
 		<>
-			<SignInForm />{" "}
+			<Flex jc="center" ai="center">
+				<SignInForm />{" "}
+			</Flex>
 			<Button
 				size="long"
 				bgColor="lightPurple"

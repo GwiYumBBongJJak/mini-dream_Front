@@ -1,6 +1,15 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Button, Flex, Header, Input, TextArea } from "../../common";
+import {
+	Button,
+	Flex,
+	Header,
+	Input,
+	TextArea,
+	Form,
+	Box,
+	Margin,
+} from "../../common";
 import { useDispatch } from "react-redux";
 import { __addBoardItem } from "../../redux/modules/board/boardSlice";
 import { FirstHeading } from "../../common";
@@ -34,41 +43,46 @@ const BoardPostPage = () => {
 		<>
 			<Header>
 				<Flex jc="center" ai="center" height="100%">
-					<FirstHeading color="white" fs="38px">
-						작성하기
+					<FirstHeading color="white" fs="38px" ls="0.06em">
+						Contribute
 					</FirstHeading>
 				</Flex>
 			</Header>
 			<Link to={-1}>
 				<Button color="white">뒤로가기</Button>
 			</Link>
-			<form onSubmit={handleOnSubmit}>
-				<Flex>
-					{/* <Box> */}
-					<Input
-						theme="post"
-						name="boardTitle"
-						value={boardItem.boardTitle}
-						onChange={handleOnChange}
-					/>
-					<Button
-						disabled={!activation}
-						size="big"
-						bgColor="lightPurple"
-						color="white"
-						radius="true"
-						shadow="true"
-					>
-						등록
-					</Button>
-					{/* </Box> */}
-					<TextArea
-						name="boardContent"
-						value={boardItem.boardContent}
-						onChange={handleOnChange}
-					/>
-				</Flex>
-			</form>
+			<Flex width="100%" height="65vh" fd="column" jc="center" ai="center">
+				<Form onSubmit={handleOnSubmit}>
+					<Flex fd="column" ai="center" jc="center">
+						<Flex gap="10px">
+							<Input
+								theme="edit"
+								name="boardTitle"
+								value={boardItem.boardTitle}
+								onChange={handleOnChange}
+								placeholder="오늘 당신이 꾼 꿈은 무엇인가요?"
+							/>
+							<Button
+								disabled={!activation}
+								size="big"
+								bgColor="lightPurple"
+								color="white"
+								radius="true"
+								shadow="true"
+								fontSize="small"
+							>
+								등록
+							</Button>
+						</Flex>
+						<TextArea
+							name="boardContent"
+							value={boardItem.boardContent}
+							onChange={handleOnChange}
+							placeholder="오늘 꾸신 꿈 내용을 마음껏 입력해보아요!"
+						/>
+					</Flex>
+				</Form>
+			</Flex>
 		</>
 	);
 };
