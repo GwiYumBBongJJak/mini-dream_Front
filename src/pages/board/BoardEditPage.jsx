@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { Button, Input, TextArea } from "../../common";
+import { Button, Flex, Header, Input, TextArea } from "../../common";
 import { useDispatch, useSelector } from "react-redux";
 import {
 	__getBoardItem,
@@ -46,7 +46,11 @@ const BoardEditPage = () => {
 
 	return (
 		<>
-			<FirstHeading>작성하기</FirstHeading>
+			<Header>
+				<Flex>
+					<FirstHeading>작성하기</FirstHeading>
+				</Flex>
+			</Header>
 			<Link to={-1}>
 				<Button color="white">뒤로가기</Button>
 			</Link>
