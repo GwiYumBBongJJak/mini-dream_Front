@@ -36,7 +36,7 @@ export const Input = styled.input`
 				`;
 			case "edit":
 				return css`
-					background-color: rgba(255, 255, 255, 0.8);
+					background-color: rgba(255, 255, 255, 0.9);
           width: 645px;
           height: 60px;
           background-color: #FAFAFA

@@ -103,7 +103,8 @@ export const Button = styled.button`
 				break;
 		}
 	}}
-		${({ fontSize }) => {
+
+	${({ fontSize }) => {
 		switch (fontSize) {
 			case "big":
 				return css`
@@ -112,6 +113,19 @@ export const Button = styled.button`
 			case "small":
 				return css`
 					font-size: 15px;
+				`;
+			default:
+				break;
+		}
+	}};
+	${({ variant }) => {
+		switch (variant) {
+			case "back-button":
+				return css`
+					position: absolute;
+					top: 26px;
+					left: 86px;
+					font-size: 17px;
 				`;
 			default:
 				break;

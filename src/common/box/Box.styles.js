@@ -18,7 +18,7 @@ export const Box = styled.div`
 				return css`
 					width: 480px;
 					color: #ffffff;
-					font-size: 42px;
+					font-size: 36px;
 					text-align: center;
 					letter-spacing: 0.03em;
 					line-height: 1.45;
@@ -58,11 +58,9 @@ export const Box = styled.div`
 				`;
 			case "edit-box":
 				return css`
-					width: 800px;
-					height: 100vh;
-					margin: 0 auto;
-					background-color: aliceblue;
+					position: relative;
 				`;
+
 			default:
 				break;
 		}

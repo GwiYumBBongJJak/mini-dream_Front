@@ -48,41 +48,47 @@ const BoardPostPage = () => {
 					</FirstHeading>
 				</Flex>
 			</Header>
-			<Link to={-1}>
-				<Button color="white">뒤로가기</Button>
-			</Link>
-			<Flex width="100%" height="65vh" fd="column" jc="center" ai="center">
-				<Form onSubmit={handleOnSubmit}>
-					<Flex fd="column" ai="center" jc="center">
-						<Flex gap="10px">
-							<Input
-								theme="edit"
-								name="boardTitle"
-								value={boardItem.boardTitle}
+			<Box variant="edit-box">
+				<Button
+					variant="back-button"
+					color="white"
+					onClick={() => navigate(-1)}
+				>
+					뒤로가기
+				</Button>
+				<Flex width="100%" height="70vh" fd="column" jc="center" ai="center">
+					<Form onSubmit={handleOnSubmit}>
+						<Flex fd="column" ai="center" jc="center">
+							<Flex gap="10px">
+								<Input
+									theme="edit"
+									name="boardTitle"
+									value={boardItem.boardTitle}
+									onChange={handleOnChange}
+									placeholder="오늘 당신이 꾼 꿈은 무엇인가요?"
+								/>
+								<Button
+									disabled={!activation}
+									size="big"
+									bgColor="lightPurple"
+									color="white"
+									radius="true"
+									shadow="true"
+									fontSize="small"
+								>
+									등록
+								</Button>
+							</Flex>
+							<TextArea
+								name="boardContent"
+								value={boardItem.boardContent}
 								onChange={handleOnChange}
-								placeholder="오늘 당신이 꾼 꿈은 무엇인가요?"
+								placeholder="오늘 꾸신 꿈 내용을 마음껏 입력해보아요!"
 							/>
-							<Button
-								disabled={!activation}
-								size="big"
-								bgColor="lightPurple"
-								color="white"
-								radius="true"
-								shadow="true"
-								fontSize="small"
-							>
-								등록
-							</Button>
 						</Flex>
-						<TextArea
-							name="boardContent"
-							value={boardItem.boardContent}
-							onChange={handleOnChange}
-							placeholder="오늘 꾸신 꿈 내용을 마음껏 입력해보아요!"
-						/>
-					</Flex>
-				</Form>
-			</Flex>
+					</Form>
+				</Flex>
+			</Box>
 		</>
 	);
 };
