@@ -42,40 +42,54 @@ const BoardEditPage = () => {
 		<>
 			<Header>
 				<Flex jc="center" ai="center" height="100%">
-					<FirstHeading color="white" fs="38px">
-						작성하기
+					<FirstHeading color="white" fs="38px" ls="0.06em">
+						Contribute
 					</FirstHeading>
 				</Flex>
 			</Header>
-			<Link to={-1}>
-				<Button color="white">뒤로가기</Button>
-			</Link>
-			<Box variant="edit-box">
-				<Form onSubmit={handleOnSubmit}>
-					<Input
-						theme="post"
-						name="boardTitle"
-						value={boardItem.boardTitle}
-						onChange={handleOnChange}
-					/>
-					<Button
-						size="big"
-						bgColor="lightPurple"
-						radius="true"
-						color="white"
-						shadow="true"
-						fontSize="small"
-						disabled={!activation}
-					>
-						등록
-					</Button>
-					<TextArea
-						name="boardContent"
-						value={boardItem.boardContent}
-						onChange={handleOnChange}
-					/>
-				</Form>
-			</Box>
+			<Flex width="100%" jc="center" ai="center">
+				<Box width="800px">
+					<Box pd="30px 0 0 22px">
+						<Button
+							variant="back-button"
+							color="white"
+							onClick={() => navigate(-1)}
+						>
+							뒤로가기
+						</Button>
+					</Box>
+					<Flex width="100%" height="70vh" fd="column" jc="center" ai="center">
+						<Form onSubmit={handleOnSubmit}>
+							<Flex fd="column" ai="center" jc="center">
+								<Flex gap="10px">
+									<Input
+										theme="edit"
+										name="boardTitle"
+										value={boardItem.boardTitle}
+										onChange={handleOnChange}
+									/>
+									<Button
+										size="big"
+										bgColor="lightPurple"
+										radius="true"
+										color="white"
+										shadow="true"
+										fontSize="small"
+										disabled={!activation}
+									>
+										등록
+									</Button>
+								</Flex>
+								<TextArea
+									name="boardContent"
+									value={boardItem.boardContent}
+									onChange={handleOnChange}
+								/>
+							</Flex>
+						</Form>
+					</Flex>
+				</Box>
+			</Flex>
 		</>
 	);
 };

@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 
 export const Box = styled.div`
 	width: ${({ width }) => (width ? width : "")};
-
+	padding: ${({ pd }) => (pd ? pd : "")};
 	${({ variant }) => {
 		switch (variant) {
 			case "lending":
@@ -58,7 +58,7 @@ export const Box = styled.div`
 				`;
 			case "edit-box":
 				return css`
-					position: relative;
+					/* position: relative; */
 				`;
 			case "detail":
 				return css`
