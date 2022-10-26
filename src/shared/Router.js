@@ -9,24 +9,27 @@ import { SignUpPage, SignInPage } from "../pages/join";
 import { RendingPage } from "../pages/rending";
 import BoardLayout from "../layout/board";
 import JoinLayout from "../layout/join";
-
+// import GlobalStyles from "../GlobalStyles";
 const Router = () => {
 	return (
-		<BrowserRouter>
-			<Routes>
-				<Route path="/" element={<RendingPage />} />
-				<Route path="/join" element={<JoinLayout />}>
-					<Route path="sign-in" element={<SignInPage />} />
-					<Route path="sign-up" element={<SignUpPage />} />
-				</Route>
-				<Route path="/board" element={<BoardLayout />}>
-					<Route path="main" element={<BoardListPage />} />
-					<Route path="detail/:id" element={<BoardDetailPage />} />
-					<Route path="edit" element={<BoardPostPage />} />
-					<Route path="edit/:id" element={<BoardEditPage />} />
-				</Route>
-			</Routes>
-		</BrowserRouter>
+		<>
+			{/* <GlobalStyles /> */}
+			<BrowserRouter>
+				<Routes>
+					<Route path="/" element={<RendingPage />} />
+					<Route path="/join" element={<JoinLayout />}>
+						<Route path="sign-in" element={<SignInPage />} />
+						<Route path="sign-up" element={<SignUpPage />} />
+					</Route>
+					<Route path="/board" element={<BoardLayout />}>
+						<Route path="main" element={<BoardListPage />} />
+						<Route path="detail/:id" element={<BoardDetailPage />} />
+						<Route path="edit" element={<BoardPostPage />} />
+						<Route path="edit/:id" element={<BoardEditPage />} />
+					</Route>
+				</Routes>
+			</BrowserRouter>
+		</>
 	);
 };
 

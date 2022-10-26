@@ -12,7 +12,7 @@ import { FirstHeading } from "../../common";
 // comment
 import {
 	__addComment,
-	setCommentAvailability,
+	// setCommentAvailability,
 } from "../../redux/modules/comment/commentSlice";
 
 const BoardDetailPage = () => {
@@ -34,26 +34,12 @@ const BoardDetailPage = () => {
 		comment: "",
 	});
 
-	const { commentAvailability } = useSelector(state => state.comment);
-
-	// 왜 여기로 옮기니까 되지..? ^^
-	// -> 댓글 컴포넌트 내부에서 설정하면 반복문만큼 알림창이 떴구나!
-	useEffect(() => {
-		if (commentAvailability) {
-			const { msg, statusCode } = commentAvailability;
-			if (statusCode === 400) {
-				alert(msg);
-				dispatch(setCommentAvailability());
-			} else if (statusCode === 200) {
-				dispatch(setCommentAvailability());
-			}
-		}
-	}, [commentAvailability, dispatch]);
-
 	return (
 		<>
 			<FirstHeading>상세 페이지</FirstHeading>
-			<Link to={-1}>뒤로가기</Link>
+			<Link to={-1}>
+				<Button color="white">뒤로가기</Button>
+			</Link>
 			<Box>
 				<ThirdHeading>{boardItem.boardTitle}</ThirdHeading>
 				<Text>{boardItem.boardContent}</Text>
@@ -78,6 +64,12 @@ const BoardDetailPage = () => {
 						}}
 					/>
 					<Button
+						size="small"
+						bgColor="lightPurple"
+						radius="true"
+						color="white"
+						shadow="true"
+						fontSize="small"
 						onClick={() => {
 							dispatch(__addComment(commentValue));
 						}}

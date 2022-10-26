@@ -13,8 +13,29 @@ const RendingContent = () => {
 					Dream your dream, 당신의 어젯밤 꿈은 무엇을 알려주고 있을까요?
 				</Text>
 			</Box>
-			<Button onClick={() => navigate("/board/main")}>바로가기</Button>
-			<Button onClick={() => navigate("join/sign-in")}>로그인</Button>
+			<Button
+				size="long"
+				color="darkPurple"
+				bgColor="semiTransparent"
+				shadow="true"
+				border="white"
+				radius="true"
+				fontSize="small"
+				onClick={() => navigate("/board/main")}
+			>
+				바로가기
+			</Button>
+			<Button
+				size="long"
+				color="darkPurple"
+				bgColor="white"
+				shadow="true"
+				radius="true"
+				fontSize="small"
+				onClick={() => navigate("join/sign-in")}
+			>
+				로그인
+			</Button>
 		</Box>
 	);
 };

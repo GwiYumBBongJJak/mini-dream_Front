@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Box, Button, Input } from "../../common";
 import {
-	__checkCommentAvailability,
 	__deleteComment,
 	__editComment,
 } from "../../redux/modules/comment/commentSlice";
@@ -28,7 +27,6 @@ const BoardComment = ({ comment }) => {
 								<dt>작성자</dt>
 								<dd>{comment.nickname}</dd>
 							</dl>
-
 							<Box>
 								<dl>
 									<dt>댓글 내용</dt>
@@ -36,17 +34,48 @@ const BoardComment = ({ comment }) => {
 								</dl>
 								{localStorage.getItem("nickname") === comment.nickname ? (
 									<>
-										<Button
-											onClick={() => {
-												// 비동기 처리 해주자 ㅇㅁㅇ!!
-												// dispatch(__checkCommentAvailability(comment.commentId));
+										{isEdit && currenCommentId ? (
+											<>
+												<Box>
+													<Input
+														defaultValue={comment.comment}
+														onChange={e => {
+															setModifiedComment(prevState => {
+																return {
+																	...prevState,
+																	comment: { modifiedComment: e.target.value },
+																};
+															});
+														}}
+													/>
+													<Button
+														onClick={() => {
+															dispatch(__editComment(modifiedComment));
+															setIsEdit(prevState => !prevState);
+														}}
+													>
+														수정
+													</Button>
+												</Box>
+											</>
+										) : (
+											<>
+												<Box>
+													<Button
+														onClick={() => {
+															// dispatch(
+															// 	__checkCommentAvailability(comment.commentId),
+															// );
 
-												setIsEdit(prevState => !prevState);
-												setCurrentCommentId(comment.commentId);
-											}}
-										>
-											수정
-										</Button>
+															setIsEdit(prevState => !prevState);
+															setCurrentCommentId(comment.commentId);
+														}}
+													>
+														수정
+													</Button>
+												</Box>
+											</>
+										)}
 										<Button
 											onClick={() => {
 												dispatch(__deleteComment(comment.commentId));
@@ -65,45 +94,3 @@ const BoardComment = ({ comment }) => {
 	);
 };
 export default BoardComment;
-
-// {isEdit && currenCommentId ? (
-//   <Box>
-//     <Input
-//       defaultValue={comment.comment}
-//       onChange={e => {
-//         setModifiedComment(prevState => {
-//           return {
-//             ...prevState,
-//             comment: { modifiedComment: e.target.value },
-//           };
-//         });
-//       }}
-//     />
-//     <Button
-//       onClick={() => {
-//         dispatch(__editComment(modifiedComment));
-//         setIsEdit(prevState => !prevState);
-//       }}
-//     >
-//       수정
-//     </Button>
-//   </Box>
-// ) : (
-//   <Box>
-//     <dl>
-//       <dt>댓글 내용</dt>
-//       <dd>{comment.comment}</dd>
-//     </dl>
-//     <Button
-//       onClick={() => {
-//         // 비동기 처리 해주자 ㅇㅁㅇ!!
-//         dispatch(__checkCommentAvailability(comment.commentId));
-
-//         setIsEdit(prevState => !prevState);
-//         setCurrentCommentId(comment.commentId);
-//       }}
-//     >
-//       수정
-//     </Button>
-//   </Box>
-// )}

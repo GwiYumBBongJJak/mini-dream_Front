@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { Text } from "../../common";
+import { Button } from "../../common";
 import {
 	__delBoardItem,
 	__getBoardItem,
@@ -23,8 +23,12 @@ const BoardChangeBtns = () => {
 
 	return (
 		<>
-			<Text onClick={handleUpdate}>수정</Text>
-			<Text onClick={handleDelete}>삭제</Text>
+			<Button color="lightPurple" onClick={handleUpdate}>
+				수정
+			</Button>
+			<Button color="darkPurple" onClick={handleDelete}>
+				삭제
+			</Button>
 		</>
 	);
 };

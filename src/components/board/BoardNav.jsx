@@ -1,4 +1,4 @@
-import { Nav, SecondHeading, Button } from "../../common";
+import { Nav, Flex, SecondHeading, Button } from "../../common";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
@@ -22,26 +22,38 @@ const BoardNav = () => {
 
 	return (
 		<Nav>
-			<SecondHeading onClick={() => navigate("/")}>解夢</SecondHeading>
-			{isLogin ? (
-				<Button
-					onClick={() => {
-						localStorage.removeItem("jwtToken");
-						dispatch(setLogout());
-						navigate("/");
-					}}
-				>
-					logout
-				</Button>
-			) : (
-				<Button onClick={() => navigate("/join/sign-in")}>login</Button>
-			)}
-			{/* 상세페이지일 경우 글쓰기 버튼이 보이지 않도록 처리 */}
-			{location.pathname !== "/board/edit" && isLogin ? (
-				<Button onClick={() => navigate("/board/edit")}>글쓰기</Button>
-			) : (
-				""
-			)}
+			<Flex>
+				<SecondHeading onClick={() => navigate("/")}>解夢</SecondHeading>
+				<Flex>
+					{isLogin ? (
+						<Button
+							color="white"
+							fontSize="big"
+							onClick={() => {
+								localStorage.removeItem("jwtToken");
+								dispatch(setLogout());
+								navigate("/");
+							}}
+						>
+							logout
+						</Button>
+					) : (
+						<Button onClick={() => navigate("/join/sign-in")}>login</Button>
+					)}
+					{/* 상세페이지일 경우 글쓰기 버튼이 보이지 않도록 처리 */}
+					{location.pathname !== "/board/edit" && isLogin ? (
+						<Button
+							color="white"
+							fontSize="big"
+							onClick={() => navigate("/board/edit")}
+						>
+							글쓰기
+						</Button>
+					) : (
+						""
+					)}
+				</Flex>
+			</Flex>
 		</Nav>
 	);
 };

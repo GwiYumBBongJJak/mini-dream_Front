@@ -59,6 +59,12 @@ const SignUpForm = () => {
 				/>
 				{errors.nickname && <p>닉네임을 입력해주세요</p>}
 				<Button
+					size="small"
+					bgColor="lightPurple"
+					radius="true"
+					color="white"
+					shadow="true"
+					fontSize="small"
 					onClick={() => dispatch(__checkNicknameDuplicate(nickName.current))}
 				>
 					중복확인
@@ -77,7 +83,15 @@ const SignUpForm = () => {
 				{errors.id && errors.id.type === "pattern" && (
 					<p>영문자 또는 숫자 5~15자를 입력해주세요.</p>
 				)}
-				<Button onClick={() => dispatch(__checkIdDuplicate(id.current))}>
+				<Button
+					size="small"
+					bgColor="lightPurple"
+					radius="true"
+					color="white"
+					shadow="true"
+					fontSize="small"
+					onClick={() => dispatch(__checkIdDuplicate(id.current))}
+				>
 					중복확인
 				</Button>
 				<Input
@@ -111,10 +125,30 @@ const SignUpForm = () => {
 					errors.password_confirm.type === "validate" && (
 						<p>비밀번호가 일치하지 않습니다.</p>
 					)}
-				<Button type="button" onClick={() => navigate("/")}>
+
+				<Button
+					size="long"
+					bgColor="transparent"
+					radius="true"
+					color="darkPurple"
+					fontSize="small"
+					border="purple"
+					type="button"
+					onClick={() => navigate("/")}
+				>
 					취소
 				</Button>
-				<Button type="submit">가입하기</Button>
+				<Button
+					size="long"
+					bgColor="lightPurple"
+					radius="true"
+					color="white"
+					fontSize="small"
+					shadow="true"
+					type="submit"
+				>
+					가입하기
+				</Button>
 			</Form>
 		</>
 	);

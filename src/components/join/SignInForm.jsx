@@ -22,7 +22,6 @@ const SignInForm = () => {
 
 	useEffect(() => {
 		// statusCode 가 202일 경우 회원가입 완료 alert과 함께 navigate하도록
-		// 400인 경우는 alert창만 띄우도록
 		if (statusCode === 400) {
 			alert(statusMessage);
 		} else if (statusCode === 1004) {
@@ -54,7 +53,16 @@ const SignInForm = () => {
 			{errors.password && errors.password.type === "required" && (
 				<p>비밀번호를 입력해주세요.</p>
 			)}
-			<Button>로그인</Button>
+			<Button
+				size="long"
+				bgColor="lightPurple"
+				radius="true"
+				color="white"
+				border="true"
+				fontSize="small"
+			>
+				로그인
+			</Button>
 		</Form>
 	);
 };

@@ -33,14 +33,23 @@ const BoardPostPage = () => {
 	return (
 		<>
 			<FirstHeading>작성하기</FirstHeading>
-			<Link to={-1}>뒤로가기</Link>
+			<Link to={-1}>
+				<Button color="white">뒤로가기</Button>
+			</Link>
 			<form onSubmit={handleOnSubmit}>
 				<Input
 					name="boardTitle"
 					value={boardItem.boardTitle}
 					onChange={handleOnChange}
 				/>
-				<Button disabled={!activation} size="big">
+				<Button
+					disabled={!activation}
+					size="big"
+					bgColor="lightPurple"
+					color="white"
+					radius="true"
+					shadow="true"
+				>
 					등록
 				</Button>
 				<TextArea
