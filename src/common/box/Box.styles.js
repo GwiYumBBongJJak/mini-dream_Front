@@ -5,8 +5,22 @@ export const Box = styled.div`
 		switch (variant) {
 			case "lending":
 				return css`
-					width: 540px;
-					height: 430px;
+					width: 600px;
+					height: 650px;
+				`;
+			case "lending-title":
+				return css`
+					width: 480px;
+					color: #ffffff;
+					font-size: 42px;
+					text-align: center;
+					letter-spacing: 0.03em;
+					line-height: 1.45;
+					p {
+						color: #ffffff;
+						margin-bottom: -40px;
+						font-weight: 600;
+					}
 				`;
 			case "boardItem":
 				return css`

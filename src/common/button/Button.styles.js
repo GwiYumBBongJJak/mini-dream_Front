@@ -5,7 +5,9 @@ export const Button = styled.button`
 	border-radius: 5px;
 	border: none;
 	background: none;
-
+	&:hover {
+		opacity: 0.9;
+	}
 	${({ size }) => {
 		switch (size) {
 			case "big":
