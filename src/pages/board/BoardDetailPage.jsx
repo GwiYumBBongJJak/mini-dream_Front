@@ -19,13 +19,14 @@ const BoardDetailPage = () => {
 	const dispatch = useDispatch();
 	const { id } = useParams();
 
-	const boardItem = useSelector(state => state.board.boardItem);
+	const { boardItem, isBoardChange } = useSelector(state => state.board);
 	const { isCommentChange } = useSelector(state => state.comment);
 
 	useEffect(() => {
 		dispatch(__getBoardItem(id));
 		if (isCommentChange) dispatch(__getBoardItem(id));
-	}, [isCommentChange, id, dispatch]);
+		if (isBoardChange) dispatch(__getBoardItem(id));
+	}, [isCommentChange, isBoardChange, id, dispatch]);
 
 	// comment
 	const [commentValue, setCommentValue] = useState({

@@ -3,6 +3,15 @@ import axios from "axios";
 
 const BASE_URL = process.env.REACT_APP_SERVER;
 
+const initialState = {
+	boardItems: [],
+	boardItem: {},
+	statusAlertMessage: null,
+	statusMsg: {},
+	error: null,
+	isBoardChange: false,
+};
+
 export const __addBoardItem = createAsyncThunk(
 	"board/addBoardItem",
 	async (payload, thunkAPI) => {
@@ -104,14 +113,6 @@ export const __getBoardItem = createAsyncThunk(
 	},
 );
 
-const initialState = {
-	boardItems: [],
-	boardItem: {},
-	statusAlertMessage: null,
-	statusMsg: {},
-	error: null,
-};
-
 const board = createSlice({
 	name: "board",
 	initialState,
@@ -131,6 +132,7 @@ const board = createSlice({
 		[__updateBoardItem.pending]: (state, action) => {},
 		[__updateBoardItem.fulfilled]: (state, action) => {
 			console.log("__updateBoardItem fulfilled=>", action.payload);
+			state.isBoardChange = !state.isBoardChange;
 		},
 		[__updateBoardItem.rejected]: (state, action) => {
 			console.log("__updateBoardItem rejected=>", action.payload);
