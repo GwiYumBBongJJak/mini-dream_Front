@@ -122,7 +122,7 @@ const board = createSlice({
 		[__addBoardItem.pending]: (state, action) => {},
 		[__addBoardItem.fulfilled]: (state, action) => {
 			console.log("addBoardItem fullfilled=>", action.payload);
-			// state.boardItems.push(action.payload);
+			state.isBoardChange = !state.isBoardChange;
 		},
 		[__addBoardItem.rejected]: (state, action) => {
 			console.log("addBoardItem rejected=>", action.payload);
@@ -142,6 +142,7 @@ const board = createSlice({
 		[__delBoardItem.pending]: (state, action) => {},
 		[__delBoardItem.fulfilled]: (state, action) => {
 			console.log("__delBoardItem fulfilled=>", action.payload);
+			state.isBoardChange = !state.isBoardChange;
 		},
 		[__delBoardItem.rejected]: (state, action) => {
 			console.log("__delBoardItem rejected=>", action.payload);
