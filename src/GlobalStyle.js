@@ -23,6 +23,8 @@ const GlobalStyles = createGlobalStyle`
  
   button {
     cursor: pointer;
+    letter-spacing: 0.1em;
+    
   }
 
   ul,

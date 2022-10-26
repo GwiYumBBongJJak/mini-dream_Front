@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Button = styled.button`
 	font-weight: 600;
@@ -11,17 +11,17 @@ export const Button = styled.button`
 	${({ size }) => {
 		switch (size) {
 			case "big":
-				return `
+				return css`
 					width: 110px;
 					height: 60px;
 				`;
 			case "small":
-				return `
+				return css`
 					width: 110px;
 					height: 50px;
 				`;
 			case "long":
-				return `
+				return css`
 					width: 140px;
 					height: 50px;
 				`;
@@ -32,20 +32,20 @@ export const Button = styled.button`
 	${({ bgColor }) => {
 		switch (bgColor) {
 			case "lightPurple":
-				return `
-        background-color: #615668;
-        `;
+				return css`
+					background-color: #615668;
+				`;
 			case "white":
-				return `
-					background-color: #FFFFFF;
+				return css`
+					background-color: #ffffff;
 				`;
 			case "transparent":
-				return `
-        background-color: rgba(255, 255, 255, 1);
+				return css`
+					background-color: rgba(255, 255, 255, 1);
 				`;
 			case "semiTransparent":
-				return `
-        background-color: rgba(255, 255, 255, 0.65);
+				return css`
+					background-color: rgba(255, 255, 255, 0.65);
 				`;
 			default:
 				break;
@@ -54,9 +54,9 @@ export const Button = styled.button`
 		${({ radius }) => {
 		switch (radius) {
 			case "true":
-				return `
-			    border-radius: 5px;
-			    `;
+				return css`
+					border-radius: 5px;
+				`;
 			default:
 				break;
 		}
@@ -64,17 +64,17 @@ export const Button = styled.button`
 		${({ color }) => {
 		switch (color) {
 			case "darkPurple":
-				return `
-          color: #42364B;      
-          `;
+				return css`
+					color: #42364b;
+				`;
 			case "lightPurple":
-				return `
-          color: #877E8D;      
-          `;
+				return css`
+					color: #877e8d;
+				`;
 			case "white":
-				return `
-            color: #FFFFFF;        
-          `;
+				return css`
+					color: #ffffff;
+				`;
 			default:
 				break;
 		}
@@ -82,9 +82,9 @@ export const Button = styled.button`
 		${({ shadow }) => {
 		switch (shadow) {
 			case "true":
-				return `
-        box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
-          `;
+				return css`
+					box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+				`;
 			default:
 				break;
 		}
@@ -92,13 +92,13 @@ export const Button = styled.button`
 		${({ border }) => {
 		switch (border) {
 			case "purple":
-				return `
-        border: 1px solid #42364B;
-        `;
+				return css`
+					border: 1px solid #42364b;
+				`;
 			case "white":
-				return `
-        border: 3px solid #FFFFFF;
-        `;
+				return css`
+					border: 3px solid #ffffff;
+				`;
 			default:
 				break;
 		}
@@ -106,13 +106,13 @@ export const Button = styled.button`
 		${({ fontSize }) => {
 		switch (fontSize) {
 			case "big":
-				return `
-        font-size: 19px;
-        `;
+				return css`
+					font-size: 19px;
+				`;
 			case "small":
-				return `
-        font-size: 15px;
-        `;
+				return css`
+					font-size: 15px;
+				`;
 			default:
 				break;
 		}

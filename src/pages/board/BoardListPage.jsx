@@ -24,14 +24,12 @@ const BoardListPage = () => {
 					</FirstHeading>
 				</Flex>
 			</Header>
-			<Margin margin="45px 0">
-				<Flex jc="center">
-					<Box>
-						{boardItems.map(boardListItem => (
-							<BoardItem key={boardListItem.boardId} {...boardListItem} />
-						))}
-					</Box>
-				</Flex>
+			<Margin margin="55px 0">
+				<Box variant="main-list">
+					{boardItems.map(boardListItem => (
+						<BoardItem key={boardListItem.boardId} {...boardListItem} />
+					))}
+				</Box>
 			</Margin>
 		</>
 	);

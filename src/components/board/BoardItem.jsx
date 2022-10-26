@@ -6,6 +6,7 @@ const BoardItem = props => {
 	const navigate = useNavigate();
 	return (
 		<Box
+			width="300px"
 			variant="boardItem"
 			onClick={() => navigate(`../detail/${props.boardId}`)}
 		>
