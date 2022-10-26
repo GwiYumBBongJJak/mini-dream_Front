@@ -19,6 +19,8 @@ export const Form = styled.form`
 					min-height: 560px;
 					max-height: 750px%;
 					padding: 50px 0;
+					margin: 300px auto;
+					background-color: rgba(255, 255, 255, 0.8);
 				`;
 			default:
 				break;
