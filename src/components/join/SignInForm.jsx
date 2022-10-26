@@ -54,7 +54,16 @@ const SignInForm = () => {
 			{errors.password && errors.password.type === "required" && (
 				<p>비밀번호를 입력해주세요.</p>
 			)}
-			<Button>로그인</Button>
+			<Button
+				size="long"
+				bgColor="lightPurple"
+				radius="true"
+				color="white"
+				border="true"
+				fontSize="small"
+			>
+				로그인
+			</Button>
 		</Form>
 	);
 };

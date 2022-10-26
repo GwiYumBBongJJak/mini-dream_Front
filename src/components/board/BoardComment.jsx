@@ -42,6 +42,7 @@ const BoardComment = ({ comment }) => {
 										}}
 									/>
 									<Button
+										color="lightPurple"
 										onClick={() => {
 											dispatch(__editComment(modifiedComment));
 											setIsEdit(prevState => !prevState);
@@ -57,6 +58,7 @@ const BoardComment = ({ comment }) => {
 										<dd>{comment.comment}</dd>
 									</dl>
 									<Button
+										color="lightPurple"
 										onClick={() => {
 											dispatch(__checkCommentAvailability(comment.commentId));
 

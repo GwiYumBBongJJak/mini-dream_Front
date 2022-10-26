@@ -80,6 +80,12 @@ const BoardDetailPage = () => {
 						}}
 					/>
 					<Button
+						size="small"
+						bgColor="lightPurple"
+						radius="true"
+						color="white"
+						shadow="true"
+						fontSize="small"
 						onClick={() => {
 							dispatch(__addComment(commentValue));
 						}}

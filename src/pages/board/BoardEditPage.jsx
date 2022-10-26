@@ -56,7 +56,17 @@ const BoardEditPage = () => {
 					value={boardItem.boardTitle}
 					onChange={handleOnChange}
 				/>
-				<Button disabled={!activation}>등록</Button>
+				<Button
+					size="small"
+					bgColor="lightPurple"
+					radius="true"
+					color="white"
+					shadow="true"
+					fontSize="small"
+					disabled={!activation}
+				>
+					등록
+				</Button>
 				<TextArea
 					name="boardContent"
 					value={boardItem.boardContent}

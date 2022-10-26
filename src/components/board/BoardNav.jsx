@@ -25,6 +25,8 @@ const BoardNav = () => {
 			<SecondHeading onClick={() => navigate("/")}>解夢</SecondHeading>
 			{isLogin ? (
 				<Button
+					color="white"
+					fontSize="big"
 					onClick={() => {
 						localStorage.removeItem("jwtToken");
 						dispatch(setLogout());
@@ -38,7 +40,13 @@ const BoardNav = () => {
 			)}
 			{/* 상세페이지일 경우 글쓰기 버튼이 보이지 않도록 처리 */}
 			{location.pathname !== "/board/edit" && isLogin ? (
-				<Button onClick={() => navigate("/board/edit")}>글쓰기</Button>
+				<Button
+					color="white"
+					fontSize="big"
+					onClick={() => navigate("/board/edit")}
+				>
+					글쓰기
+				</Button>
 			) : (
 				""
 			)}

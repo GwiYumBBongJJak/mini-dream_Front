@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
 export const Button = styled.button`
+	font-weight: 600;
+	border-radius: 5px;
+	border: none;
+	background: none;
+
 	${({ size }) => {
 		switch (size) {
 			case "big":
@@ -22,7 +27,6 @@ export const Button = styled.button`
 				break;
 		}
 	}}
-
 	${({ bgColor }) => {
 		switch (bgColor) {
 			case "lightPurple":
@@ -45,8 +49,7 @@ export const Button = styled.button`
 				break;
 		}
 	}}
-
-	${({ radius }) => {
+		${({ radius }) => {
 		switch (radius) {
 			case "true":
 				return `
@@ -56,12 +59,15 @@ export const Button = styled.button`
 				break;
 		}
 	}}
-
-	${({ color }) => {
+		${({ color }) => {
 		switch (color) {
-			case "purple":
+			case "darkPurple":
 				return `
           color: #42364B;      
+          `;
+			case "lightPurple":
+				return `
+          color: #877E8D;      
           `;
 			case "white":
 				return `
@@ -71,8 +77,7 @@ export const Button = styled.button`
 				break;
 		}
 	}}
-
-	${({ shadow }) => {
+		${({ shadow }) => {
 		switch (shadow) {
 			case "true":
 				return `
@@ -82,4 +87,32 @@ export const Button = styled.button`
 				break;
 		}
 	}}
+		${({ border }) => {
+		switch (border) {
+			case "purple":
+				return `
+        border: 1px solid #42364B;
+        `;
+			case "white":
+				return `
+        border: 3px solid #FFFFFF;
+        `;
+			default:
+				break;
+		}
+	}}
+		${({ fontSize }) => {
+		switch (fontSize) {
+			case "big":
+				return `
+        font-size: 19px;
+        `;
+			case "small":
+				return `
+        font-size: 15px;
+        `;
+			default:
+				break;
+		}
+	}};
 `;
