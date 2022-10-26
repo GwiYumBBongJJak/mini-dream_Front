@@ -13,9 +13,12 @@ const BoardNav = () => {
 	const dispatch = useDispatch();
 
 	// 유저 정보 가져오기
+	const user = localStorage.getItem("jwtToken");
 	useEffect(() => {
-		if (localStorage.getItem("jwtToken")) dispatch(__getUserInfo());
-	}, [dispatch]);
+		if (user) {
+			dispatch(__getUserInfo());
+		}
+	}, [dispatch, user]);
 
 	return (
 		<Nav>

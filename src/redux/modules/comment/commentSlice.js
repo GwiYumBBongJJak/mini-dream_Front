@@ -11,51 +11,6 @@ const initialState = {
 	error: null,
 };
 
-// // 댓글 추가
-// export const __addComment = createAsyncThunk(
-// 	"comment/addComment",
-// 	async (payload, thunkAPI) => {
-// 		try {
-// 			const { boardId } = payload;
-// 			console.log("__addComment payload => ", payload);
-// 			console.log("board id => ", +boardId);
-// 			const token = localStorage.getItem("jwtToken");
-// 			console.log(token);
-// 			console.log("getUserInfo token =>", token);
-// 			const response = await axios.post(
-// 				`${BASE_URL}/auth/comments/${+boardId}/create`,
-// 				payload,
-// 				{
-// 					headers: { Authorization: `${token}` },
-// 				},
-// 			);
-// 			console.log("__addComment response =>", response);
-// 			return thunkAPI.fulfillWithValue(response.data);
-// 		} catch (error) {
-// 			console.log("__addComment error =>", error);
-// 			return thunkAPI.rejectWithValue(error.response.data);
-// 		}
-// 	},
-// );
-
-// 댓글 불러오기
-export const __getComment = createAsyncThunk(
-	"comment/getComment",
-	async (payload, thunkAPI) => {
-		try {
-			console.log("getcComment payload => ", payload);
-			const response = await axios.get(`http://localhost:3001/comments`);
-			console.log("getComment response =>", response);
-
-			return thunkAPI.fulfillWithValue(response.data);
-		} catch (error) {
-			console.log("getComment error =>", error);
-
-			return thunkAPI.rejectWithValue(error);
-		}
-	},
-);
-
 // 댓글 추가
 export const __addComment = createAsyncThunk(
 	"comment/addComment",
@@ -64,18 +19,63 @@ export const __addComment = createAsyncThunk(
 			const { boardId } = payload;
 			console.log("__addComment payload => ", payload);
 			console.log("board id => ", +boardId);
+			const token = localStorage.getItem("jwtToken");
+			console.log(token);
+			console.log("getUserInfo token =>", token);
 			const response = await axios.post(
-				`http://localhost:3001/comments`,
+				`${BASE_URL}/auth/comments/${+boardId}/create`,
 				payload,
+				{
+					headers: { Authorization: `${token}` },
+				},
 			);
 			console.log("__addComment response =>", response);
 			return thunkAPI.fulfillWithValue(response.data);
 		} catch (error) {
 			console.log("__addComment error =>", error);
-			return thunkAPI.rejectWithValue(error);
+			return thunkAPI.rejectWithValue(error.response.data);
 		}
 	},
 );
+
+// // 댓글 불러오기
+// export const __getComment = createAsyncThunk(
+// 	"comment/getComment",
+// 	async (payload, thunkAPI) => {
+// 		try {
+// 			console.log("getcComment payload => ", payload);
+// 			const response = await axios.get(`http://localhost:3001/comments`);
+// 			console.log("getComment response =>", response);
+
+// 			return thunkAPI.fulfillWithValue(response.data);
+// 		} catch (error) {
+// 			console.log("getComment error =>", error);
+
+// 			return thunkAPI.rejectWithValue(error);
+// 		}
+// 	},
+// );
+
+// // 댓글 추가
+// export const __addComment = createAsyncThunk(
+// 	"comment/addComment",
+// 	async (payload, thunkAPI) => {
+// 		try {
+// 			const { boardId } = payload;
+// 			console.log("__addComment payload => ", payload);
+// 			console.log("board id => ", +boardId);
+// 			const response = await axios.post(
+// 				`http://localhost:3001/comments`,
+// 				payload,
+// 			);
+// 			console.log("__addComment response =>", response);
+// 			return thunkAPI.fulfillWithValue(response.data);
+// 		} catch (error) {
+// 			console.log("__addComment error =>", error);
+// 			return thunkAPI.rejectWithValue(error);
+// 		}
+// 	},
+// );
 
 // 댓글 삭제
 export const __deleteComment = createAsyncThunk(
@@ -123,23 +123,23 @@ const commentSlice = createSlice({
 	reducers: {},
 	extraReducers: {
 		// 댓글 불러오기
-		[__getComment.pending]: (state, _) => {
-			console.log("__getComment.pending");
-			state.isLoading = true;
-		},
-		[__getComment.fulfilled]: (state, action) => {
-			console.log("__getComment.fulfilled =>", action.payload);
-			state.isLoading = false;
-			state.statusMessage = action.payload.msg;
-			state.statusCode = action.payload.statusCode;
-			state.comments = action.payload;
-		},
-		[__getComment.rejected]: (state, action) => {
-			console.log("__getComment.rejected =>", action.payload);
-			state.isLoading = false;
-			state.statusMessage = action.payload.msg;
-			state.statusCode = action.payload.statusCode;
-		},
+		// [__getComment.pending]: (state, _) => {
+		// 	console.log("__getComment.pending");
+		// 	state.isLoading = true;
+		// },
+		// [__getComment.fulfilled]: (state, action) => {
+		// 	console.log("__getComment.fulfilled =>", action.payload);
+		// 	state.isLoading = false;
+		// 	state.statusMessage = action.payload.msg;
+		// 	state.statusCode = action.payload.statusCode;
+		// 	state.comments = action.payload;
+		// },
+		// [__getComment.rejected]: (state, action) => {
+		// 	console.log("__getComment.rejected =>", action.payload);
+		// 	state.isLoading = false;
+		// 	state.statusMessage = action.payload.msg;
+		// 	state.statusCode = action.payload.statusCode;
+		// },
 		// 댓글 등록
 		[__addComment.pending]: (state, _) => {
 			console.log("__addComment.pending");
@@ -150,7 +150,6 @@ const commentSlice = createSlice({
 			state.isLoading = false;
 			state.statusMessage = action.payload.msg;
 			state.statusCode = action.payload.statusCode;
-			state.comments.push(action.payload);
 		},
 		[__addComment.rejected]: (state, action) => {
 			console.log("__addComment.rejected =>", action.payload);

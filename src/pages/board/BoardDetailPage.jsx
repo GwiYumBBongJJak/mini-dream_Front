@@ -8,7 +8,6 @@ import { __getBoardItem } from "../../redux/modules/board/boardSlice";
 import { FirstHeading } from "../../common";
 // comment
 import {
-	__getComment,
 	__addComment,
 	__deleteComment,
 	__editComment,
@@ -20,6 +19,7 @@ const BoardDetailPage = () => {
 
 	const boardItem = useSelector(state => state.board.boardItem);
 
+	console.log("board Itme =>", boardItem.comments);
 	useEffect(() => {
 		dispatch(__getBoardItem(id));
 	}, [dispatch, id]);
@@ -29,14 +29,6 @@ const BoardDetailPage = () => {
 		boardId: id,
 		comment: "",
 	});
-
-	// comment get test code
-	useEffect(() => {
-		dispatch(__getComment());
-	}, [dispatch]);
-
-	const { comments } = useSelector(state => state.comment);
-	console.log("comments =>", comments);
 
 	return (
 		<>
@@ -49,55 +41,55 @@ const BoardDetailPage = () => {
 				<BoardChangeBtns />
 			</Box>
 			{/* comments */}
-			<Box>
-				<Box>
-					<dl>
-						<dt>댓글</dt>
-						<dl>3개</dl>
-					</dl>
-					<Box>
-						<Input
-							onChange={e => {
-								setCommentValue(prevState => {
-									return {
-										...prevState,
-										comment: e.target.value,
-									};
-								});
-							}}
-						/>
-						<Button
-							onClick={() => {
-								dispatch(__addComment(commentValue));
-							}}
-						>
-							등록
-						</Button>
-					</Box>
-				</Box>
-				{comments?.map(comment => {
-					return (
+			{boardItem.comments?.map(comment => {
+				return (
+					<Box key={comment.comment_id}>
+						<Box>
+							<dl>
+								<dt>댓글</dt>
+								<dl>{boardItem.comments.length}</dl>
+							</dl>
+							<Box>
+								<Input
+									onChange={e => {
+										setCommentValue(prevState => {
+											return {
+												...prevState,
+												comment: e.target.value,
+											};
+										});
+									}}
+								/>
+								<Button
+									onClick={() => {
+										dispatch(__addComment(commentValue));
+									}}
+								>
+									등록
+								</Button>
+							</Box>
+						</Box>
 						<Box>
 							<ul>
 								<li>
 									<dl>
 										<dt>작성자</dt>
-										<dd>멋쟁이 토마토</dd>
+										<dd>{comment.nickname}</dd>
 									</dl>
 									<dl>
 										<dt>댓글 내용</dt>
-										<dd>동글동글 멋진 몸매에</dd>
+										<dd>{comment.comment}</dd>
 									</dl>
 									<Button
 										onClick={() => {
-											dispatch(__editComment({ id: comment.id }));
+											// dispatch(__editComment({ id: comment.id }));
 										}}
 									>
 										수정
 									</Button>
 									<Button
 										onClick={() => {
-											dispatch(__deleteComment(comment.id));
+											// dispatch(__deleteComment(comment.id));
 										}}
 									>
 										삭제
@@ -105,9 +97,9 @@ const BoardDetailPage = () => {
 								</li>
 							</ul>
 						</Box>
-					);
-				})}
-			</Box>
+					</Box>
+				);
+			})}
 		</>
 	);
 };
