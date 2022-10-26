@@ -34,6 +34,10 @@ export const Box = styled.div`
 					border-radius: 5px;
 					padding: 25px 30px;
 				`;
+			case "nav-layout":
+				return css`
+					width: 850px;
+				`;
 			default:
 				break;
 		}
