@@ -54,6 +54,7 @@ const SignUpForm = () => {
 			>
 				<FirstHeading>Sign up</FirstHeading>
 				<Input
+					theme="short"
 					placeholder="nickname"
 					{...register("nickname", { required: true })}
 				/>
@@ -70,6 +71,7 @@ const SignUpForm = () => {
 					중복확인
 				</Button>
 				<Input
+					theme="short"
 					placeholder="아이디"
 					{...register("id", {
 						required: true,
@@ -95,6 +97,7 @@ const SignUpForm = () => {
 					중복확인
 				</Button>
 				<Input
+					theme="long"
 					type="password"
 					placeholder="비밀번호"
 					{...register("password", {
@@ -110,6 +113,7 @@ const SignUpForm = () => {
 					<p>8 ~ 16자 영문, 숫자를 입력해주세요.</p>
 				)}
 				<Input
+					theme="long"
 					type="password"
 					placeholder="비밀번호를 재입력해주세요"
 					{...register("password_confirm", {

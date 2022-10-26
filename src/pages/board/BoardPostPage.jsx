@@ -42,6 +42,7 @@ const BoardPostPage = () => {
 			</Link>
 			<form onSubmit={handleOnSubmit}>
 				<Input
+					theme="post"
 					name="boardTitle"
 					value={boardItem.boardTitle}
 					onChange={handleOnChange}

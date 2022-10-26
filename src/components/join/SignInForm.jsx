@@ -39,6 +39,7 @@ const SignInForm = () => {
 		>
 			<FirstHeading>LOGIN</FirstHeading>
 			<Input
+				theme="long"
 				placeholder="아이디를 입력해주세요"
 				{...register("id", { required: true })}
 			/>
@@ -46,6 +47,7 @@ const SignInForm = () => {
 				<p>아이디를 입력해주세요.</p>
 			)}
 			<Input
+				theme="long"
 				placeholder="비밀번호를 입력해주세요"
 				type="password"
 				{...register("password", { required: true })}
