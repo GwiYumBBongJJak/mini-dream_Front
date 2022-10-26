@@ -63,6 +63,15 @@ export const Box = styled.div`
 					margin: 0 auto;
 					background-color: aliceblue;
 				`;
+			case "detail":
+				return css`
+					width: 800px;
+					height: 100vh;
+					margin: 60px auto;
+					background-color: rgba(255, 255, 255, 0.9);
+					box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+					border-radius: 5px;
+				`;
 			default:
 				break;
 		}

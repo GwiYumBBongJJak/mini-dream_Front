@@ -54,7 +54,7 @@ const BoardDetailPage = () => {
 			<Link to={-1}>
 				<Button color="white">뒤로가기</Button>
 			</Link>
-			<Box>
+			<Box variant="detail">
 				<ThirdHeading>{boardItem.boardTitle}</ThirdHeading>
 				<Text>{boardItem.boardContent}</Text>
 				<BoardReactions />
