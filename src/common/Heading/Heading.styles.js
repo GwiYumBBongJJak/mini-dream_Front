@@ -17,4 +17,5 @@ export const ThirdHeading = styled.h3`
 	font-size: ${({ fs }) => (fs ? fs : "")};
 	text-align: ${({ ta }) => (ta ? ta : "")};
 	letter-spacing: ${({ ls }) => (ls ? ls : "")};
+	font-weight: 600px;
 `;

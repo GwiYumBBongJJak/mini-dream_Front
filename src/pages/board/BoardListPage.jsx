@@ -1,7 +1,7 @@
 import { BoardItem } from "../../components/board";
 import { useDispatch, useSelector } from "react-redux";
 import { __getBoardList } from "../../redux/modules/board/boardSlice";
-import { Box, FirstHeading, Flex, Header } from "../../common";
+import { Box, FirstHeading, Flex, Header, Margin } from "../../common";
 import { useEffect } from "react";
 
 const BoardListPage = () => {
@@ -22,13 +22,15 @@ const BoardListPage = () => {
 					<FirstHeading>모아보기</FirstHeading>
 				</Flex>
 			</Header>
-			<Flex jc="center">
-				<Box>
-					{boardItems.map(boardListItem => (
-						<BoardItem key={boardListItem.boardId} {...boardListItem} />
-					))}
-				</Box>
-			</Flex>
+			<Margin margin="45px 0">
+				<Flex jc="center">
+					<Box>
+						{boardItems.map(boardListItem => (
+							<BoardItem key={boardListItem.boardId} {...boardListItem} />
+						))}
+					</Box>
+				</Flex>
+			</Margin>
 		</>
 	);
 };

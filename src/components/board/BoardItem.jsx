@@ -9,7 +9,9 @@ const BoardItem = props => {
 			variant="boardItem"
 			onClick={() => navigate(`../detail/${props.boardId}`)}
 		>
-			<ThirdHeading>{props.boardTitle}</ThirdHeading>
+			<ThirdHeading fs="20px" color="#4A4452">
+				{props.boardTitle}
+			</ThirdHeading>
 			<Text>{props.nickname}</Text>
 			<BoardReactions />
 		</Box>

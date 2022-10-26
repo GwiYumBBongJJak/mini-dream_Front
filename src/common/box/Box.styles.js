@@ -30,7 +30,9 @@ export const Box = styled.div`
 				return css`
 					background-color: #e8e8e9;
 					width: 260px;
-					height: 180px;
+					height: 140px;
+					border-radius: 5px;
+					padding: 25px 30px;
 				`;
 			default:
 				break;

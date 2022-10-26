@@ -21,37 +21,37 @@ const BoardNav = () => {
 	}, [dispatch, user]);
 
 	return (
-		<Flex width="100%" ai="center">
+		<Flex>
 			<Nav>
-				<Flex jc="space-between">
+				<Flex jc="space-between" ai="center">
 					<SecondHeading onClick={() => navigate("/")}>解夢</SecondHeading>
-					<Flex>
+					<Flex width="300px">
 						{isLogin ? (
-							<Button
-								color="white"
-								fontSize="big"
-								onClick={() => {
-									localStorage.removeItem("jwtToken");
-									dispatch(setLogout());
-									navigate("/");
-								}}
-							>
-								logout
-							</Button>
+							<Margin margin="0 40px 0 0">
+								<Button
+									color="white"
+									fontSize="big"
+									onClick={() => {
+										localStorage.removeItem("jwtToken");
+										dispatch(setLogout());
+										navigate("/");
+									}}
+								>
+									logout
+								</Button>
+							</Margin>
 						) : (
 							<Button onClick={() => navigate("/join/sign-in")}>login</Button>
 						)}
 						{/* 상세페이지일 경우 글쓰기 버튼이 보이지 않도록 처리 */}
 						{location.pathname !== "/board/edit" && isLogin ? (
-							<Margin margin="40px">
-								<Button
-									color="white"
-									fontSize="big"
-									onClick={() => navigate("/board/edit")}
-								>
-									글쓰기
-								</Button>
-							</Margin>
+							<Button
+								color="white"
+								fontSize="big"
+								onClick={() => navigate("/board/edit")}
+							>
+								글쓰기
+							</Button>
 						) : (
 							""
 						)}
