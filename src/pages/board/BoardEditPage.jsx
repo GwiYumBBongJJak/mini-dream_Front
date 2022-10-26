@@ -47,8 +47,10 @@ const BoardEditPage = () => {
 	return (
 		<>
 			<Header>
-				<Flex>
-					<FirstHeading>작성하기</FirstHeading>
+				<Flex jc="center" ai="center" height="100%">
+					<FirstHeading color="white" fs="38px">
+						작성하기
+					</FirstHeading>
 				</Flex>
 			</Header>
 			<Link to={-1}>

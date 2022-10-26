@@ -1,11 +1,9 @@
 import styled from "styled-components";
 
 export const Header = styled.div`
-	background-image: url("/images/dream.jpg");
-	background-position: center center;
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-color: beige;
+	background: url("/images/dream.jpg") no-repeat center center/cover,
+		rgba(0, 0, 0, 0.5);
 	width: 100%;
 	height: 250px;
+	background-blend-mode: multiply;
 `;

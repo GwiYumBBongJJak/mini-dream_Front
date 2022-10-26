@@ -45,8 +45,10 @@ const BoardDetailPage = () => {
 	return (
 		<>
 			<Header>
-				<Flex>
-					<FirstHeading>상세페이지</FirstHeading>
+				<Flex jc="center" ai="center" height="100%">
+					<FirstHeading color="white" fs="38px">
+						상세페이지
+					</FirstHeading>
 				</Flex>
 			</Header>
 			<Link to={-1}>

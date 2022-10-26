@@ -28,9 +28,10 @@ export const SecondHeading = styled.h2`
 	}}
 `;
 export const ThirdHeading = styled.h3`
+	font-weight: 600;
+	margin-bottom: 10px;
 	color: ${({ color }) => (color ? color : "")};
 	font-size: ${({ fs }) => (fs ? fs : "")};
 	text-align: ${({ ta }) => (ta ? ta : "")};
 	letter-spacing: ${({ ls }) => (ls ? ls : "")};
-	font-weight: 600px;
 `;
