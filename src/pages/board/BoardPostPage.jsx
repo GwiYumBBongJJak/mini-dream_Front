@@ -33,35 +33,41 @@ const BoardPostPage = () => {
 	return (
 		<>
 			<Header>
-				<Flex>
-					<FirstHeading>작성하기</FirstHeading>
+				<Flex jc="center" ai="center" height="100%">
+					<FirstHeading color="white" fs="38px">
+						작성하기
+					</FirstHeading>
 				</Flex>
 			</Header>
 			<Link to={-1}>
 				<Button color="white">뒤로가기</Button>
 			</Link>
 			<form onSubmit={handleOnSubmit}>
-				<Input
-					theme="post"
-					name="boardTitle"
-					value={boardItem.boardTitle}
-					onChange={handleOnChange}
-				/>
-				<Button
-					disabled={!activation}
-					size="big"
-					bgColor="lightPurple"
-					color="white"
-					radius="true"
-					shadow="true"
-				>
-					등록
-				</Button>
-				<TextArea
-					name="boardContent"
-					value={boardItem.boardContent}
-					onChange={handleOnChange}
-				/>
+				<Flex>
+					{/* <Box> */}
+					<Input
+						theme="post"
+						name="boardTitle"
+						value={boardItem.boardTitle}
+						onChange={handleOnChange}
+					/>
+					<Button
+						disabled={!activation}
+						size="big"
+						bgColor="lightPurple"
+						color="white"
+						radius="true"
+						shadow="true"
+					>
+						등록
+					</Button>
+					{/* </Box> */}
+					<TextArea
+						name="boardContent"
+						value={boardItem.boardContent}
+						onChange={handleOnChange}
+					/>
+				</Flex>
 			</form>
 		</>
 	);
