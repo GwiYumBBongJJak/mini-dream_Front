@@ -4,7 +4,7 @@ import * as styles from "./JoinLayout.styles";
 const JoinLayout = () => {
 	return (
 		<styles.JoinLayout>
-			레이아웃임
+			레이아웃임 ㅎㅎ
 			<Outlet></Outlet>
 		</styles.JoinLayout>
 	);
