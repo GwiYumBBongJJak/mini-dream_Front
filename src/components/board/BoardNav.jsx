@@ -45,7 +45,13 @@ const BoardNav = () => {
 									</Button>
 								</Margin>
 							) : (
-								<Button onClick={() => navigate("/join/sign-in")}>login</Button>
+								<Button
+									color="white"
+									fontSize="big"
+									onClick={() => navigate("/join/sign-in")}
+								>
+									login
+								</Button>
 							)}
 							{/* 상세페이지일 경우 글쓰기 버튼이 보이지 않도록 처리 */}
 							{location.pathname !== "/board/edit" && isLogin ? (
