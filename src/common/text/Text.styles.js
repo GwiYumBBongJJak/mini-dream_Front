@@ -17,10 +17,10 @@ export const Text = styled.p`
 		switch (variant) {
 			case "join-alert-text":
 				return css`
-					color: #814e80;
+					color: #744a73;
 					font-weight: 600;
-					font-size: 18px;
-					letter-spacing: 0.06em;
+					font-size: 17px;
+					letter-spacing: 0.04em;
 					position: relative;
 				`;
 			default:
