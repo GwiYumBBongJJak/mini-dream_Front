@@ -8,6 +8,12 @@ export const Box = styled.div`
 					width: 540px;
 					height: 430px;
 				`;
+			case "boardItem":
+				return css`
+					background-color: #e8e8e9;
+					width: 260px;
+					height: 180px;
+				`;
 			default:
 				break;
 		}
