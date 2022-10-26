@@ -1,13 +1,11 @@
 import { SignInForm } from "../../components/join";
-import { Button, Flex } from "../../common";
-import { useNavigate } from "react-router-dom";
+import { Flex } from "../../common";
 
 const SignInPage = () => {
-	const navigate = useNavigate();
 	return (
 		<>
 			<Flex jc="center" ai="center">
-				<SignInForm />{" "}
+				<SignInForm />
 			</Flex>
 		</>
 	);
