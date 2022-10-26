@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Button, Input, TextArea } from "../../common";
 import { useDispatch, useSelector } from "react-redux";
-import { __updateBoardItem } from "../../redux/modules/board/boardSlice";
+import {
+	__getBoardItem,
+	__updateBoardItem,
+} from "../../redux/modules/board/boardSlice";
 import { FirstHeading } from "../../common";
+import useButton from "../../hooks/useButton";
 
 const BoardEditPage = () => {
 	const dispatch = useDispatch();
@@ -11,7 +15,23 @@ const BoardEditPage = () => {
 	const { id } = useParams();
 	const response = useSelector(state => state.board.boardItem);
 
-	const [boardItem, setBoardItem] = useState(response);
+	const [boardItem, setBoardItem] = useState({});
+	const { activation } = useButton(boardItem);
+	console.log("@ => boardItem", boardItem);
+
+	// 무한렌더링
+	// useEffect(() => {
+	// 	dispatch(__getBoardItem(id));
+	// 	setBoardItem(response);
+	// }, [dispatch, id, response]);
+
+	useEffect(() => {
+		dispatch(__getBoardItem(id));
+	}, [dispatch, id]);
+
+	useEffect(() => {
+		setBoardItem(response);
+	}, [response]);
 
 	const handleOnChange = e => {
 		const { name, value } = e.target;
@@ -21,7 +41,6 @@ const BoardEditPage = () => {
 	const handleOnSubmit = e => {
 		e.preventDefault();
 		dispatch(__updateBoardItem(boardItem));
-		alert("등록되었습니다.");
 		navigate(`../detail/${id}`);
 	};
 
@@ -30,12 +49,13 @@ const BoardEditPage = () => {
 			<FirstHeading>작성하기</FirstHeading>
 			<Link to={-1}>뒤로가기</Link>
 			<form onSubmit={handleOnSubmit}>
+				{console.log("#--", boardItem)}
 				<Input
 					name="boardTitle"
 					value={boardItem.boardTitle}
 					onChange={handleOnChange}
 				/>
-				<Button>등록</Button>
+				<Button disabled={!activation}>등록</Button>
 				<TextArea
 					name="boardContent"
 					value={boardItem.boardContent}

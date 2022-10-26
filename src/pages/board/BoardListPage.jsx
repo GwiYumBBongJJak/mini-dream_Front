@@ -8,6 +8,7 @@ const BoardListPage = () => {
 	const dispatch = useDispatch();
 
 	const boardList = useSelector(state => state.board.boardItems);
+
 	useEffect(() => {
 		dispatch(__getBoardList());
 	}, [dispatch]);

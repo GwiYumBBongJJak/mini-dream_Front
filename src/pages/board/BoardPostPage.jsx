@@ -4,6 +4,7 @@ import { Button, Input, TextArea } from "../../common";
 import { useDispatch } from "react-redux";
 import { __addBoardItem } from "../../redux/modules/board/boardSlice";
 import { FirstHeading } from "../../common";
+import useButton from "../../hooks/useButton";
 
 const BoardPostPage = () => {
 	const dispatch = useDispatch();
@@ -15,6 +16,7 @@ const BoardPostPage = () => {
 	};
 
 	const [boardItem, setBoardItem] = useState(init);
+	const { activation } = useButton(boardItem);
 
 	const handleOnChange = e => {
 		const { name, value } = e.target;
@@ -38,7 +40,9 @@ const BoardPostPage = () => {
 					value={boardItem.boardTitle}
 					onChange={handleOnChange}
 				/>
-				<Button size="big">등록</Button>
+				<Button disabled={!activation} size="big">
+					등록
+				</Button>
 				<TextArea
 					name="boardContent"
 					value={boardItem.boardContent}

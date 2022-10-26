@@ -3,7 +3,6 @@ import { Box, ThirdHeading, Text } from "../../common";
 import BoardReactions from "./BoardReactions";
 
 const BoardItem = props => {
-	console.log("@#@#", props);
 	const navigate = useNavigate();
 	return (
 		<Box onClick={() => navigate(`../detail/${props.boardId}`)}>
