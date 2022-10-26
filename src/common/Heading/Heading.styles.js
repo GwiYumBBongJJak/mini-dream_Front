@@ -20,6 +20,7 @@ export const SecondHeading = styled.h2`
 					font-weight: 700;
 					font-size: 24px;
 					letter-spacing: 0.1em;
+					cursor: pointer;
 				`;
 			default:
 				break;
