@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Button, Input, TextArea } from "../../common";
+import { Button, Flex, Header, Input, TextArea } from "../../common";
 import { useDispatch } from "react-redux";
 import { __addBoardItem } from "../../redux/modules/board/boardSlice";
 import { FirstHeading } from "../../common";
@@ -32,7 +32,11 @@ const BoardPostPage = () => {
 
 	return (
 		<>
-			<FirstHeading>작성하기</FirstHeading>
+			<Header>
+				<Flex>
+					<FirstHeading>작성하기</FirstHeading>
+				</Flex>
+			</Header>
 			<Link to={-1}>
 				<Button color="white">뒤로가기</Button>
 			</Link>

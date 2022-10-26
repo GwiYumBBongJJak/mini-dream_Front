@@ -1,7 +1,15 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { Box, Text, ThirdHeading, Input, Button } from "../../common";
+import {
+	Box,
+	Text,
+	ThirdHeading,
+	Input,
+	Button,
+	Header,
+	Flex,
+} from "../../common";
 import {
 	BoardChangeBtns,
 	BoardReactions,
@@ -52,7 +60,11 @@ const BoardDetailPage = () => {
 
 	return (
 		<>
-			<FirstHeading>상세 페이지</FirstHeading>
+			<Header>
+				<Flex>
+					<FirstHeading>상세페이지</FirstHeading>
+				</Flex>
+			</Header>
 			<Link to={-1}>
 				<Button color="white">뒤로가기</Button>
 			</Link>

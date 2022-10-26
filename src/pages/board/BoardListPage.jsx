@@ -1,7 +1,7 @@
 import { BoardItem } from "../../components/board";
 import { useDispatch, useSelector } from "react-redux";
 import { __getBoardList } from "../../redux/modules/board/boardSlice";
-import { FirstHeading } from "../../common";
+import { FirstHeading, Flex, Header } from "../../common";
 import { useEffect } from "react";
 
 const BoardListPage = () => {
@@ -19,7 +19,11 @@ const BoardListPage = () => {
 
 	return (
 		<>
-			<FirstHeading>모아보기</FirstHeading>
+			<Header>
+				<Flex align="center">
+					<FirstHeading>모아보기</FirstHeading>
+				</Flex>
+			</Header>
 			{boardList.map(boardListItem => (
 				<BoardItem key={boardListItem.boardId} {...boardListItem} />
 			))}

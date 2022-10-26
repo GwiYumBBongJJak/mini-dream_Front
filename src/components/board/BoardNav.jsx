@@ -22,7 +22,7 @@ const BoardNav = () => {
 
 	return (
 		<Nav>
-			<Flex>
+			<Flex align="spaceBetween">
 				<SecondHeading onClick={() => navigate("/")}>解夢</SecondHeading>
 				<Flex>
 					{isLogin ? (
