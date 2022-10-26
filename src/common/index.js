@@ -8,6 +8,7 @@ import Text from "./text";
 import TextArea from "./textArea";
 import Form from "./form";
 import Header from "./header";
+import Margin from "./margin";
 
 export {
 	Box,
@@ -22,4 +23,5 @@ export {
 	TextArea,
 	Form,
 	Header,
+	Margin,
 };
