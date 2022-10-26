@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 export const Box = styled.div`
-	background-color: gray;
+	background-color: #d5d5d5;
 	${({ variant }) => {
 		switch (variant) {
 			case "login":
