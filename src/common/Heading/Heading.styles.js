@@ -5,6 +5,7 @@ export const FirstHeading = styled.h1`
 	font-size: ${({ fs }) => (fs ? fs : "")};
 	text-align: ${({ ta }) => (ta ? ta : "")};
 	letter-spacing: ${({ ls }) => (ls ? ls : "")};
+	font-weight: ${({ fw }) => (fw ? fw : "")};
 `;
 export const SecondHeading = styled.h2`
 	color: ${({ color }) => (color ? color : "")};

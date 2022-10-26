@@ -1,4 +1,4 @@
-import { Form, Input, Button, FirstHeading } from "../../common";
+import { Form, Input, Button, FirstHeading, Flex } from "../../common";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -32,39 +32,44 @@ const SignInForm = () => {
 
 	return (
 		<Form
+			theme="signIn"
 			onSubmit={handleSubmit(data => {
 				const { id, password } = data;
 				dispatch(__requestSignIn({ password, username: id }));
 			})}
 		>
-			<FirstHeading>LOGIN</FirstHeading>
-			<Input
-				theme="long"
-				placeholder="아이디를 입력해주세요"
-				{...register("id", { required: true })}
-			/>
-			{errors.id && errors.id.type === "required" && (
-				<p>아이디를 입력해주세요.</p>
-			)}
-			<Input
-				theme="long"
-				placeholder="비밀번호를 입력해주세요"
-				type="password"
-				{...register("password", { required: true })}
-			/>
-			{errors.password && errors.password.type === "required" && (
-				<p>비밀번호를 입력해주세요.</p>
-			)}
-			<Button
-				size="long"
-				bgColor="lightPurple"
-				radius="true"
-				color="white"
-				border="true"
-				fontSize="small"
-			>
-				로그인
-			</Button>
+			<Flex fd="column" jc="center" ai="center" height="100%" gap="30px">
+				<FirstHeading color="#42364B" fs="35px" fw="700">
+					LOGIN
+				</FirstHeading>
+				<Input
+					theme="long"
+					placeholder="아이디를 입력해주세요"
+					{...register("id", { required: true })}
+				/>
+				{errors.id && errors.id.type === "required" && (
+					<p>아이디를 입력해주세요.</p>
+				)}
+				<Input
+					theme="long"
+					placeholder="비밀번호를 입력해주세요"
+					type="password"
+					{...register("password", { required: true })}
+				/>
+				{errors.password && errors.password.type === "required" && (
+					<p>비밀번호를 입력해주세요.</p>
+				)}
+				<Button
+					size="long"
+					bgColor="lightPurple"
+					radius="true"
+					color="white"
+					border="true"
+					fontSize="small"
+				>
+					로그인
+				</Button>
+			</Flex>
 		</Form>
 	);
 };

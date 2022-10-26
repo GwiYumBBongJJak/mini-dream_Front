@@ -7,4 +7,5 @@ export const Flex = styled.div`
 	align-items: ${({ ai }) => (ai ? ai : "flex-start")};
 	height: ${({ height }) => (height ? height : "")};
 	width: ${({ width }) => (width ? width : "")};
+	gap: ${({ gap }) => (gap ? gap : "")};
 `;

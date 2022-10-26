@@ -1,12 +1,14 @@
 import { SignInForm } from "../../components/join";
-import { Button } from "../../common";
+import { Button, Flex } from "../../common";
 import { useNavigate } from "react-router-dom";
 
 const SignInPage = () => {
 	const navigate = useNavigate();
 	return (
 		<>
-			<SignInForm />{" "}
+			<Flex jc="center" ai="center">
+				<SignInForm />{" "}
+			</Flex>
 			<Button
 				size="long"
 				bgColor="lightPurple"
