@@ -33,7 +33,6 @@ export const Input = styled.input`
 			case "comment":
 				return `
         width: 600px;
-        background-color: #
         `;
 			default:
 				break;
