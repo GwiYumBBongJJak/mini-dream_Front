@@ -5,7 +5,8 @@ const BASE_URL = process.env.REACT_APP_SERVER;
 
 const initialState = {
 	nickname: null,
-	statusAlertMessage: null,
+	statusMessage: null,
+	statusCode: null,
 	isLogin: null,
 	isLoading: false,
 	error: null,
@@ -18,12 +19,12 @@ export const __requestSignUp = createAsyncThunk(
 			console.log("requestSignUp payload =>", payload);
 			const response = await axios.post(`${BASE_URL}/member/register`, payload);
 
-			console.log("response =>", response.data);
+			console.log("requestSignUp response.data =>", response.data);
 
 			return thunkAPI.fulfillWithValue(response.data);
 		} catch (error) {
-			console.log("error =>", error);
-			return thunkAPI.rejectWithValue(error);
+			console.log("requestSignUp error =>", error);
+			return thunkAPI.rejectWithValue(error.response.data);
 		}
 	},
 );
@@ -36,12 +37,13 @@ export const __requestSignIn = createAsyncThunk(
 			console.log("requestSignIn payload =>", payload);
 			console.log();
 			const response = await axios.post(`${BASE_URL}/member/login`, payload);
+			// const response = await axios.post(`${BASE_URL}/member/login`, payload);
 
-			console.log("response =>", response);
+			console.log("requestSignIn response =>", response);
 
 			return thunkAPI.fulfillWithValue(response.data);
 		} catch (error) {
-			console.log("error =>", error);
+			console.log("requestSignIn error =>", error);
 			return thunkAPI.rejectWithValue(error.response.data);
 		}
 	},
@@ -56,11 +58,11 @@ export const __checkNicknameDuplicate = createAsyncThunk(
 			const response = await axios.post(
 				`${BASE_URL}/member/nickname/${nickname}`,
 			);
-			console.log("response =>", response);
+			console.log("checkNicknameDuplicate response =>", response);
 			return thunkAPI.fulfillWithValue(response.data);
 		} catch (error) {
-			console.log("error =>", error);
-			return thunkAPI.rejectWithValue(error);
+			console.log("checkNicknameDuplicate error =>", error);
+			return thunkAPI.rejectWithValue(error.response.data);
 		}
 	},
 );
@@ -72,11 +74,11 @@ export const __checkIdDuplicate = createAsyncThunk(
 			console.log("checkIdDuplicate payload =>", payload);
 			const username = payload;
 			const response = await axios.post(`${BASE_URL}/member/id/${username}`);
-			console.log("response =>", response);
+			console.log("checkIdDuplicate response =>", response);
 			return thunkAPI.fulfillWithValue(response.data);
 		} catch (error) {
-			console.log("error =>", error);
-			return thunkAPI.rejectWithValue(error);
+			console.log("checkIdDuplicate error =>", error);
+			return thunkAPI.rejectWithValue(error.response.data);
 		}
 	},
 );
@@ -87,15 +89,15 @@ export const __getUserInfo = createAsyncThunk(
 	async (payload, thunkAPI) => {
 		try {
 			const token = localStorage.getItem("jwtToken");
-			console.log("token =>", token);
+			console.log("getUserInfo token =>", token);
 			const response = await axios.get(`${BASE_URL}/auth/member/info`, {
 				headers: { Authorization: `${token}` },
 			});
-			console.log("response =>", response);
+			console.log("getUserInfo response =>", response);
 			return thunkAPI.fulfillWithValue(response.data);
 		} catch (error) {
-			console.log("error =>", error);
-			return thunkAPI.rejectWithValue(error);
+			console.log("getUserInfo error =>", error);
+			return thunkAPI.rejectWithValue(error.response.data);
 		}
 	},
 );
@@ -106,6 +108,9 @@ const joinSlice = createSlice({
 	reducers: {
 		setLogout: (state, _) => {
 			state.isLogin = false;
+		},
+		setStatusCode: (state, _) => {
+			state.statusCode = null;
 		},
 	},
 	extraReducers: {
@@ -159,14 +164,18 @@ const joinSlice = createSlice({
 		},
 		[__requestSignIn.fulfilled]: (state, action) => {
 			console.log("__requestSignIn.fulfilled =>", action.payload);
-			state.isLoading = false;
 			localStorage.setItem("jwtToken", action.payload.accessToken);
+			state.isLoading = false;
 			state.nickname = action.payload.nickname;
 			state.isLogin = true;
+			// 여기도 statusCode로 통일
+			state.statusCode = action.payload.status;
 		},
 		[__requestSignIn.rejected]: (state, action) => {
 			console.log("__requestSignIn.rejected =>", action.payload);
 			state.isLoading = false;
+			state.statusCode = action.payload.statusCode;
+			state.statusMessage = action.payload.msg;
 			state.error = action.payload;
 		},
 		// 사용자 정보 가져오기
@@ -177,7 +186,7 @@ const joinSlice = createSlice({
 		[__getUserInfo.fulfilled]: (state, action) => {
 			console.log("__getUserInfo.fulfilled =>", action.payload);
 			state.isLoading = false;
-			state.nickname = action.payload.nickname;
+			state.nickname = action.payload.msg;
 			state.isLogin = true;
 		},
 		[__getUserInfo.rejected]: (state, action) => {
@@ -188,5 +197,5 @@ const joinSlice = createSlice({
 	},
 });
 
-export const { setLogout } = joinSlice.actions;
+export const { setLogout, setStatusCode } = joinSlice.actions;
 export default joinSlice.reducer;

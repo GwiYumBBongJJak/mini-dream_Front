@@ -28,6 +28,13 @@ const SignUpForm = () => {
 	id.current = watch("id");
 	password.current = watch("password");
 
+	// 닉네임 중복 체크 status code에 따라 에러메세지를 결정 &
+	// state 만들어서 아래에 p태그로 띄워준다.
+	// 성공이라면 state 만들어서 disable 버튼으로 바꿔준다.
+	// 만약 input을 다시 클릭시에는 일반 버튼으로 변경해준다.
+	// 둘 모두의 status code가 정상일 경우에만 버튼이 눌릴 수 있도록 처리해준다.
+	// 버튼이 눌린 후 navigate
+
 	return (
 		<>
 			<Form

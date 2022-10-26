@@ -1,9 +1,12 @@
 import { Form, Input, Button, FirstHeading } from "../../common";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { __requestSignIn } from "../../redux/modules/join/joinSlice";
-import { useEffect } from "react";
+import {
+	__requestSignIn,
+	setStatusCode,
+} from "../../redux/modules/join/joinSlice";
 
 const SignInForm = () => {
 	const dispatch = useDispatch();
@@ -22,10 +25,11 @@ const SignInForm = () => {
 		// 400인 경우는 alert창만 띄우도록
 		if (statusCode === 400) {
 			alert(statusMessage);
-		} else {
-			// navigate("/board/main");
+		} else if (statusCode === 1004) {
+			dispatch(setStatusCode());
+			navigate("/board/main");
 		}
-	}, [statusMessage, statusCode]);
+	}, [statusMessage, statusCode, dispatch, navigate]);
 
 	return (
 		<Form
@@ -50,7 +54,7 @@ const SignInForm = () => {
 			{errors.password && errors.password.type === "required" && (
 				<p>비밀번호를 입력해주세요.</p>
 			)}
-			<Button onClick={() => navigate("/join/sign-up")}>회원가입</Button>
+
 			<Button>로그인</Button>
 		</Form>
 	);
