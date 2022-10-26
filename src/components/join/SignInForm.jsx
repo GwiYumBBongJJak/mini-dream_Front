@@ -22,7 +22,6 @@ const SignInForm = () => {
 
 	useEffect(() => {
 		// statusCode 가 202일 경우 회원가입 완료 alert과 함께 navigate하도록
-		// 400인 경우는 alert창만 띄우도록
 		if (statusCode === 400) {
 			alert(statusMessage);
 		} else if (statusCode === 1004) {

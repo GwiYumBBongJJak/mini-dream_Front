@@ -10,6 +10,7 @@ const initialState = {
 	isLogin: null,
 	isLoading: false,
 	error: null,
+	// 각 API에 대한 상태값이 별도로 필요하다.
 };
 
 export const __requestSignUp = createAsyncThunk(
@@ -33,7 +34,6 @@ export const __requestSignIn = createAsyncThunk(
 	"join/requestSignIn",
 	async (payload, thunkAPI) => {
 		try {
-			console.log("@@@", BASE_URL);
 			console.log("requestSignIn payload =>", payload);
 			console.log();
 			const response = await axios.post(`${BASE_URL}/member/login`, payload);
@@ -165,6 +165,7 @@ const joinSlice = createSlice({
 		[__requestSignIn.fulfilled]: (state, action) => {
 			console.log("__requestSignIn.fulfilled =>", action.payload);
 			localStorage.setItem("jwtToken", action.payload.accessToken);
+			localStorage.setItem("nickname", action.payload.nickname);
 			state.isLoading = false;
 			state.nickname = action.payload.nickname;
 			state.isLogin = true;

@@ -35,19 +35,19 @@ const SignUpForm = () => {
 	// 둘 모두의 status code가 정상일 경우에만 버튼이 눌릴 수 있도록 처리해준다.
 	// 버튼이 눌린 후 navigate
 
+	// 중복 확인 버튼을 눌렀을 때,
+	// 1. __checkNicknameDuplicate(nickName.current)로 현재 input의 value를 검사
+	// 2. 검사시 동일한 값이 있다면
+	// 3. 회원가입 버튼을 누를 수 없도록 함 (경고창과 함께)
+	// * 동일한 값이 없을 경우 *
+	// 1. 사용할 수 있는 아이디입니다. 라는 컴포넌트가 출력되도록 함
+	// 2. 중복 확인 버튼을 누를 수 없도록 함
+
 	return (
 		<>
 			<Form
 				onSubmit={handleSubmit(data => {
 					const { nickname, id, password } = data;
-					console.log(
-						"nickname =>",
-						nickname,
-						"id =>",
-						id,
-						"password =>",
-						password,
-					);
 					dispatch(__requestSignUp({ nickname, username: id, password }));
 					navigate("/join/sign-in");
 				})}
