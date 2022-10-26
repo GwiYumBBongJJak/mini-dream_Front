@@ -1,6 +1,8 @@
 import styled, { css } from "styled-components";
 
 export const Box = styled.div`
+	width: ${({ width }) => (width ? width : "")};
+
 	${({ variant }) => {
 		switch (variant) {
 			case "lending":

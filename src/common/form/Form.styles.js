@@ -16,9 +16,9 @@ export const Form = styled.form`
 			case "signUp":
 				return css`
 					width: 559px;
-					height: 557px;
-					margin: 340px auto;
-					background-color: rgba(255, 255, 255, 0.8);
+					min-height: 560px;
+					max-height: 750px%;
+					padding: 50px 0;
 				`;
 			default:
 				break;
