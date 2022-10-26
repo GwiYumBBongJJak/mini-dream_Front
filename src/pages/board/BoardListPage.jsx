@@ -20,7 +20,7 @@ const BoardListPage = () => {
 			<Header>
 				<Flex jc="center" ai="center" height="100%">
 					<FirstHeading color="white" fs="38px" fw="600">
-						모아보기
+						꿈을 Dream
 					</FirstHeading>
 				</Flex>
 			</Header>
