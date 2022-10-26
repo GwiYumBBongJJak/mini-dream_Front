@@ -41,7 +41,7 @@ export const Button = styled.button`
 				`;
 			case "transparent":
 				return css`
-					background-color: rgba(255, 255, 255, 1);
+					background-color: rgba(255, 255, 255, 0.2);
 				`;
 			case "semiTransparent":
 				return css`
