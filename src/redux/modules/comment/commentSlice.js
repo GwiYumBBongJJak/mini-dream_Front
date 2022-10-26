@@ -38,44 +38,10 @@ export const __addComment = createAsyncThunk(
 	},
 );
 
-// // 댓글 불러오기
-// export const __getComment = createAsyncThunk(
-// 	"comment/getComment",
-// 	async (payload, thunkAPI) => {
-// 		try {
-// 			console.log("getcComment payload => ", payload);
-// 			const response = await axios.get(`http://localhost:3001/comments`);
-// 			console.log("getComment response =>", response);
-
-// 			return thunkAPI.fulfillWithValue(response.data);
-// 		} catch (error) {
-// 			console.log("getComment error =>", error);
-
-// 			return thunkAPI.rejectWithValue(error);
-// 		}
-// 	},
-// );
-
-// // 댓글 추가
-// export const __addComment = createAsyncThunk(
-// 	"comment/addComment",
-// 	async (payload, thunkAPI) => {
-// 		try {
-// 			const { boardId } = payload;
-// 			console.log("__addComment payload => ", payload);
-// 			console.log("board id => ", +boardId);
-// 			const response = await axios.post(
-// 				`http://localhost:3001/comments`,
-// 				payload,
-// 			);
-// 			console.log("__addComment response =>", response);
-// 			return thunkAPI.fulfillWithValue(response.data);
-// 		} catch (error) {
-// 			console.log("__addComment error =>", error);
-// 			return thunkAPI.rejectWithValue(error);
-// 		}
-// 	},
-// );
+// 댓글 수정 권한 확인
+export const __checkCommentAvailability = createAsyncThunk(
+	"comment/checkCommentAvailability",
+);
 
 // 댓글 삭제
 export const __deleteComment = createAsyncThunk(
@@ -122,24 +88,6 @@ const commentSlice = createSlice({
 	initialState,
 	reducers: {},
 	extraReducers: {
-		// 댓글 불러오기
-		// [__getComment.pending]: (state, _) => {
-		// 	console.log("__getComment.pending");
-		// 	state.isLoading = true;
-		// },
-		// [__getComment.fulfilled]: (state, action) => {
-		// 	console.log("__getComment.fulfilled =>", action.payload);
-		// 	state.isLoading = false;
-		// 	state.statusMessage = action.payload.msg;
-		// 	state.statusCode = action.payload.statusCode;
-		// 	state.comments = action.payload;
-		// },
-		// [__getComment.rejected]: (state, action) => {
-		// 	console.log("__getComment.rejected =>", action.payload);
-		// 	state.isLoading = false;
-		// 	state.statusMessage = action.payload.msg;
-		// 	state.statusCode = action.payload.statusCode;
-		// },
 		// 댓글 등록
 		[__addComment.pending]: (state, _) => {
 			console.log("__addComment.pending");
