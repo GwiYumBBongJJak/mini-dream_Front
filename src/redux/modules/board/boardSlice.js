@@ -1,19 +1,22 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const instance = axios.create({
-	baseURL: process.env.REACT_APP_SERVER,
-	headers: {
-		Authorization: `${localStorage.getItem("jwtToken")}`,
-	},
-});
+const BASE_URL = process.env.REACT_APP_SERVER;
 
 export const __addBoardItem = createAsyncThunk(
 	"board/addBoardItem",
 	async (payload, thunkAPI) => {
 		try {
 			console.log("__addBoardItem payload =>", payload);
-			const response = await instance.post(`/auth/boards/create`, payload);
+			const token = localStorage.getItem("jwtToken");
+			console.log("getUserInfo token =>", token);
+			const response = await axios.post(
+				`${BASE_URL}/auth/boards/create`,
+				payload,
+				{
+					headers: { Authorization: `${token}` },
+				},
+			);
 			console.log("__addBoardItem response =>", response);
 			return thunkAPI.fulfillWithValue(response.data);
 		} catch (error) {
@@ -28,9 +31,14 @@ export const __updateBoardItem = createAsyncThunk(
 	async (payload, thunkAPI) => {
 		try {
 			console.log("__updateBoardItem payload =>", payload);
-			const response = await instance.put(
-				`/auth/boards/modify/${payload.boardId}`,
+			const token = localStorage.getItem("jwtToken");
+			console.log("getUserInfo token =>", token);
+			const response = await axios.put(
+				`${BASE_URL}/auth/boards/modify/${payload.boardId}`,
 				payload,
+				{
+					headers: { Authorization: `${token}` },
+				},
 			);
 			console.log("__updateBoardItem response =>", response);
 			return thunkAPI.fulfillWithValue(response.data);
@@ -46,7 +54,14 @@ export const __delBoardItem = createAsyncThunk(
 	async (payload, thunkAPI) => {
 		try {
 			console.log("__delBoardItem payload =>", payload);
-			const response = await instance.delete(`/auth/boards/delete/${payload}`);
+			const token = localStorage.getItem("jwtToken");
+			console.log("getUserInfo token =>", token);
+			const response = await axios.delete(
+				`${BASE_URL}/auth/boards/delete/${payload}`,
+				{
+					headers: { Authorization: `${token}` },
+				},
+			);
 			console.log("__delBoardItem response =>", response);
 			return thunkAPI.fulfillWithValue(response.data);
 		} catch (error) {
@@ -60,7 +75,11 @@ export const __getBoardList = createAsyncThunk(
 	"getBoardList",
 	async (_, thunkAPI) => {
 		try {
-			const response = await instance.get(`/boards`);
+			const token = localStorage.getItem("jwtToken");
+			console.log("getUserInfo token =>", token);
+			const response = await axios.get(`${BASE_URL}/boards`, {
+				headers: { Authorization: `${token}` },
+			});
 			console.log("__getBoardList response =>", response);
 			return thunkAPI.fulfillWithValue(response.data.boardResponseDtos);
 		} catch (error) {
@@ -75,7 +94,11 @@ export const __getBoardItem = createAsyncThunk(
 	async (payload, thunkAPI) => {
 		try {
 			console.log("__getBoardItem payload =>", payload);
-			const response = await instance.get(`/boards/${payload}`);
+			const token = localStorage.getItem("jwtToken");
+			console.log("getUserInfo token =>", token);
+			const response = await axios.get(`${BASE_URL}/boards/${payload}`, {
+				headers: { Authorization: `${token}` },
+			});
 			console.log("__getBoardItem response =>", response);
 			return thunkAPI.fulfillWithValue(response.data);
 		} catch (error) {
