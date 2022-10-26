@@ -18,7 +18,6 @@ const BoardChangeBtns = () => {
 
 	const handleDelete = () => {
 		dispatch(__delBoardItem(id));
-		alert("삭제되었을수도?확인해보등가");
 		navigate(`../main`);
 	};
 
