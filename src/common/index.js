@@ -7,6 +7,7 @@ import { FirstHeading, SecondHeading, ThirdHeading } from "./heading";
 import Text from "./text";
 import TextArea from "./textArea";
 import Form from "./form";
+import Header from "./header";
 
 export {
 	Box,
@@ -20,4 +21,5 @@ export {
 	Text,
 	TextArea,
 	Form,
+	Header,
 };

@@ -1,9 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import reset from "styled-components";
-
 const GlobalStyle = createGlobalStyle`
-  /* ${reset} */
-
   * {
     box-sizing: border-box;
   }
@@ -13,8 +9,7 @@ const GlobalStyle = createGlobalStyle`
 	margin: 0;
 	padding: 0;
 	border: 0;
-  font-family: 'Jua', sans-serif;
-	resize: none;
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;	resize: none;
   }
   a {
     text-decoration: none;
