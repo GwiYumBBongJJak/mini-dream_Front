@@ -7,6 +7,10 @@ export const Box = styled.div`
 				return css`
 					width: 600px;
 					height: 650px;
+					transition: all 2000ms;
+					&:hover {
+						transform: translateY(-1%);
+					}
 				`;
 			case "lending-title":
 				return css`
