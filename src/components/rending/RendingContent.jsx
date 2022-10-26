@@ -5,8 +5,8 @@ const RendingContent = () => {
 	const navigate = useNavigate();
 	return (
 		<Flex jc="center" ai="center" width="100%" height="100%">
-			<Box variant={"lending"}>
-				<Flex fd="column" jc="center" ai="center" width="100%" height="100%">
+			<Flex fd="column" jc="center" ai="center" width="100%" height="100%">
+				<Box variant={"lending"}>
 					<Margin margin="0 0 50px 20px">
 						<FirstHeading color="#ffffff" fs="105px" ls="0.1em">
 							解夢:
@@ -59,8 +59,8 @@ const RendingContent = () => {
 							</Margin>
 						</Flex>
 					</Margin>
-				</Flex>
-			</Box>
+				</Box>
+			</Flex>
 		</Flex>
 	);
 };

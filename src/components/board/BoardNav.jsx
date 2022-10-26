@@ -1,4 +1,4 @@
-import { Nav, Flex, SecondHeading, Button, Margin } from "../../common";
+import { Nav, Flex, SecondHeading, Button, Margin, Box } from "../../common";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
@@ -21,29 +21,34 @@ const BoardNav = () => {
 	}, [dispatch, user]);
 
 	return (
-		<Flex width="100%" ai="center">
-			<Nav>
-				<Flex jc="space-between">
-					<SecondHeading onClick={() => navigate("/")}>解夢</SecondHeading>
-					<Flex>
-						{isLogin ? (
-							<Button
-								color="white"
-								fontSize="big"
-								onClick={() => {
-									localStorage.removeItem("jwtToken");
-									dispatch(setLogout());
-									navigate("/");
-								}}
-							>
-								logout
-							</Button>
-						) : (
-							<Button onClick={() => navigate("/join/sign-in")}>login</Button>
-						)}
-						{/* 상세페이지일 경우 글쓰기 버튼이 보이지 않도록 처리 */}
-						{location.pathname !== "/board/edit" && isLogin ? (
-							<Margin margin="40px">
+		<Nav>
+			<Flex height="100%" ai="center" jc="center">
+				<Box variant="nav-layout">
+					<Flex jc="space-between">
+						<SecondHeading variant="nav-logo" onClick={() => navigate("/")}>
+							🌙 Heamong
+						</SecondHeading>
+						<Box>
+							{isLogin ? (
+								<Margin dp="inline-block" margin="0 40px 0 0">
+									{" "}
+									<Button
+										color="white"
+										fontSize="big"
+										onClick={() => {
+											localStorage.removeItem("jwtToken");
+											dispatch(setLogout());
+											navigate("/");
+										}}
+									>
+										logout
+									</Button>
+								</Margin>
+							) : (
+								<Button onClick={() => navigate("/join/sign-in")}>login</Button>
+							)}
+							{/* 상세페이지일 경우 글쓰기 버튼이 보이지 않도록 처리 */}
+							{location.pathname !== "/board/edit" && isLogin ? (
 								<Button
 									color="white"
 									fontSize="big"
@@ -51,14 +56,14 @@ const BoardNav = () => {
 								>
 									글쓰기
 								</Button>
-							</Margin>
-						) : (
-							""
-						)}
+							) : (
+								""
+							)}
+						</Box>
 					</Flex>
-				</Flex>
-			</Nav>
-		</Flex>
+				</Box>
+			</Flex>
+		</Nav>
 	);
 };
 

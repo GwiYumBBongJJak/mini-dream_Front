@@ -32,6 +32,10 @@ export const Box = styled.div`
 					width: 260px;
 					height: 180px;
 				`;
+			case "nav-layout":
+				return css`
+					width: 850px;
+				`;
 			default:
 				break;
 		}
