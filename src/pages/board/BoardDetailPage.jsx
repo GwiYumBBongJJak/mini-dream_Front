@@ -33,7 +33,9 @@ const BoardDetailPage = () => {
 	return (
 		<>
 			<FirstHeading>상세 페이지</FirstHeading>
-			<Link to={-1}>뒤로가기</Link>
+			<Link to={-1}>
+				<Button color="white">뒤로가기</Button>
+			</Link>
 			<Box>
 				<ThirdHeading>{boardItem.boardTitle}</ThirdHeading>
 				<Text>{boardItem.boardContent}</Text>

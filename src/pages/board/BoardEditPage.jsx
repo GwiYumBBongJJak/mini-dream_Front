@@ -47,9 +47,10 @@ const BoardEditPage = () => {
 	return (
 		<>
 			<FirstHeading>작성하기</FirstHeading>
-			<Link to={-1}>뒤로가기</Link>
+			<Link to={-1}>
+				<Button color="white">뒤로가기</Button>
+			</Link>
 			<form onSubmit={handleOnSubmit}>
-				{console.log("#--", boardItem)}
 				<Input
 					name="boardTitle"
 					value={boardItem.boardTitle}
