@@ -9,17 +9,6 @@ const SignInPage = () => {
 			<Flex jc="center" ai="center">
 				<SignInForm />{" "}
 			</Flex>
-			<Button
-				size="long"
-				bgColor="lightPurple"
-				radius="true"
-				color="white"
-				border="true"
-				fontSize="small"
-				onClick={() => navigate("/join/sign-up")}
-			>
-				회원가입
-			</Button>
 		</>
 	);
 };
