@@ -48,40 +48,6 @@ export const __requestSignIn = createAsyncThunk(
 	},
 );
 
-export const __checkNicknameDuplicate = createAsyncThunk(
-	"join/idDuplicateCheck",
-	async (payload, thunkAPI) => {
-		try {
-			console.log("checkNicknameDuplicate payload =>", payload);
-			const nickname = payload;
-			const response = await axios.post(
-				`${BASE_URL}/member/nickname/${nickname}`,
-			);
-			console.log("checkNicknameDuplicate response =>", response);
-			return thunkAPI.fulfillWithValue(response.data);
-		} catch (error) {
-			console.log("checkNicknameDuplicate error =>", error);
-			return thunkAPI.rejectWithValue(error.response.data);
-		}
-	},
-);
-
-export const __checkIdDuplicate = createAsyncThunk(
-	"join/nicknameDuplicate",
-	async (payload, thunkAPI) => {
-		try {
-			console.log("checkIdDuplicate payload =>", payload);
-			const username = payload;
-			const response = await axios.post(`${BASE_URL}/member/id/${username}`);
-			console.log("checkIdDuplicate response =>", response);
-			return thunkAPI.fulfillWithValue(response.data);
-		} catch (error) {
-			console.log("checkIdDuplicate error =>", error);
-			return thunkAPI.rejectWithValue(error.response.data);
-		}
-	},
-);
-
 // 유저 정보를 가져오기
 export const __getUserInfo = createAsyncThunk(
 	"join/getUserInfo",
@@ -114,34 +80,6 @@ const joinSlice = createSlice({
 	},
 
 	extraReducers: {
-		// 닉네임 확인
-		[__checkNicknameDuplicate.pending]: (state, _) => {
-			console.log("__checkNicknameDuplicate.pending");
-			state.isLoading = true;
-		},
-		[__checkNicknameDuplicate.fulfilled]: (state, action) => {
-			console.log("__checkNicknameDuplicate.fulfilled =>", action.payload);
-			state.user = action.payload;
-		},
-		[__checkNicknameDuplicate.rejected]: (state, action) => {
-			console.log("__checkNicknameDuplicate.rejected =>", action.payload);
-			state.isLoading = false;
-			state.error = action.payload;
-		},
-		// 아이디 확인
-		[__checkIdDuplicate.pending]: (state, _) => {
-			console.log("__checkIdDuplicate.pending");
-			state.isLoading = true;
-		},
-		[__checkIdDuplicate.fulfilled]: (state, action) => {
-			console.log("__checkIdDuplicate.fulfilled =>", action.payload);
-			state.user = action.payload;
-		},
-		[__checkIdDuplicate.rejected]: (state, action) => {
-			console.log("__checkIdDuplicate.rejected =>", action.payload);
-			state.isLoading = false;
-			state.error = action.payload;
-		},
 		// 회원가입
 		[__requestSignUp.pending]: (state, _) => {
 			console.log("__requestSignUp.pending");
@@ -150,11 +88,15 @@ const joinSlice = createSlice({
 		[__requestSignUp.fulfilled]: (state, action) => {
 			console.log("__requestSignUp.fulfilled =>", action.payload);
 			state.isLoading = false;
+			state.statusCode = action.payload.statusCode;
+			state.statusMessage = action.payload.msg;
 			state.user = action.payload;
 		},
 		[__requestSignUp.rejected]: (state, action) => {
 			console.log("__requestSignUp.rejected =>", action.payload);
 			state.isLoading = false;
+			state.statusCode = action.payload.statusCode;
+			state.statusMessage = action.payload.msg;
 			state.error = action.payload;
 		},
 		// 로그인
@@ -170,7 +112,8 @@ const joinSlice = createSlice({
 			state.nickname = action.payload.nickname;
 			state.isLogin = true;
 			// 여기도 statusCode로 통일
-			state.statusCode = action.payload.status;
+			state.statusCode = action.payload.statusCode;
+			state.statusMessage = action.payload.msg;
 		},
 		[__requestSignIn.rejected]: (state, action) => {
 			console.log("__requestSignIn.rejected =>", action.payload);
