@@ -58,7 +58,7 @@ const BoardEditPage = () => {
 							뒤로가기
 						</Button>
 					</Box>
-					<Flex width="100%" height="70vh" fd="column" jc="center" ai="center">
+					<Flex width="100%" height="66vh" fd="column" jc="center" ai="center">
 						<Form onSubmit={handleOnSubmit}>
 							<Flex fd="column" ai="center" jc="center">
 								<Flex gap="10px">
