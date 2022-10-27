@@ -9,6 +9,7 @@ import {
 	Button,
 	Header,
 	Flex,
+	Margin,
 } from "../../common";
 import {
 	BoardChangeBtns,
@@ -57,8 +58,14 @@ const BoardDetailPage = () => {
 			<Box variant="detail">
 				<ThirdHeading>{boardItem.boardTitle}</ThirdHeading>
 				<Text>{boardItem.boardContent}</Text>
-				<BoardReactions />
-				<BoardChangeBtns />
+				<Flex jc="flex-end" ai="center">
+					<Margin margin="0 160px 0 0">
+						<BoardReactions />
+					</Margin>
+					<Margin margin="0 50px 0 0">
+						<BoardChangeBtns />
+					</Margin>
+				</Flex>
 			</Box>
 			{/* comments */}
 			<Box>
