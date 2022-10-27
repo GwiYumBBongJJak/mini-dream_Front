@@ -34,11 +34,12 @@ export const SecondHeading = styled.h2`
 `;
 export const ThirdHeading = styled.h3`
 	font-weight: 600;
-	margin-bottom: 45px;
 	color: ${({ color }) => (color ? color : "")};
 	font-size: ${({ fs }) => (fs ? fs : "")};
 	text-align: ${({ ta }) => (ta ? ta : "")};
 	letter-spacing: ${({ ls }) => (ls ? ls : "")};
 	text-transform: ${({ tt }) => (tt ? tt : "")};
 	font-weight: ${({ fw }) => (fw ? fw : "")};
+	margin-bottom: ${({ mb }) => (mb ? mb : "")};
+	/* margin-bottom: 45px; */
 `;

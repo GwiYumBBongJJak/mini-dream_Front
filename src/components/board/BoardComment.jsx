@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Box, Button, Input } from "../../common";
+import { Box, Button, Input, Text } from "../../common";
 import {
 	__deleteComment,
 	__editComment,
@@ -19,25 +19,23 @@ const BoardComment = ({ comment }) => {
 
 	return (
 		<>
-			<Box>
+			<Box variant="commentItem">
 				<Box>
 					<ul>
 						<li>
 							<dl>
-								<dt>작성자</dt>
-								<dd>{comment.nickname}</dd>
+								<Text color="#877E8D" fs="16px" lh="1.5rem">
+									{comment.nickname}
+								</Text>
 							</dl>
 							<Box>
-								<dl>
-									<dt>댓글 내용</dt>
-									<dd>{comment.comment}</dd>
-								</dl>
 								{localStorage.getItem("nickname") === comment.nickname ? (
 									<>
 										{isEdit && currenCommentId ? (
 											<>
 												<Box>
 													<Input
+														width="100%"
 														defaultValue={comment.comment}
 														onChange={e => {
 															setModifiedComment(prevState => {
@@ -49,6 +47,7 @@ const BoardComment = ({ comment }) => {
 														}}
 													/>
 													<Button
+														variant="commentEdit"
 														onClick={() => {
 															dispatch(__editComment(modifiedComment));
 															setIsEdit(prevState => !prevState);
@@ -61,7 +60,14 @@ const BoardComment = ({ comment }) => {
 										) : (
 											<>
 												<Box>
+													<dl>
+														<Text color="##42364B" fs="18px">
+															{comment.comment}
+														</Text>
+													</dl>
+													{/* 여기부터 */}
 													<Button
+														variant="commentEdit"
 														onClick={() => {
 															// dispatch(
 															// 	__checkCommentAvailability(comment.commentId),
@@ -77,12 +83,14 @@ const BoardComment = ({ comment }) => {
 											</>
 										)}
 										<Button
+											variant="commentDel"
 											onClick={() => {
 												dispatch(__deleteComment(comment.commentId));
 											}}
 										>
 											삭제
 										</Button>
+										{/* 여기까지 */}
 									</>
 								) : null}
 							</Box>

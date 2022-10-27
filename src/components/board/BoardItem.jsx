@@ -11,12 +11,14 @@ const BoardItem = props => {
 			onClick={() => navigate(`../detail/${props.boardId}`)}
 		>
 			<Flex fd="column" jc="space-around" ai="center" height="100%">
-				<ThirdHeading fs="20px" color="#4A4452" fw="700">
-					{props.boardTitle}
-				</ThirdHeading>
-				<Text color="#7E7B86" fw="600">
-					{props.nickname}
-				</Text>
+				<Flex width="100%" fd="column">
+					<ThirdHeading fs="20px" color="#4A4452" fw="700" mb="10px">
+						{props.boardTitle}
+					</ThirdHeading>
+					<Text color="#7E7B86" fw="600">
+						{props.nickname}
+					</Text>
+				</Flex>
 				<Flex variant="list">
 					<BoardReactions />
 				</Flex>
