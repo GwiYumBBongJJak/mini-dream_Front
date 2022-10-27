@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Box, Button, Input, Text } from "../../common";
+import { Box, Button, Input, Text, Flex } from "../../common";
 import {
 	__deleteComment,
 	__editComment,
@@ -33,19 +33,19 @@ const BoardComment = ({ comment }) => {
 									<>
 										{isEdit && currenCommentId ? (
 											<>
-												<Box>
-													<Input
-														width="100%"
-														defaultValue={comment.comment}
-														onChange={e => {
-															setModifiedComment(prevState => {
-																return {
-																	...prevState,
-																	comment: { modifiedComment: e.target.value },
-																};
-															});
-														}}
-													/>
+												<Input
+													width="100%"
+													defaultValue={comment.comment}
+													onChange={e => {
+														setModifiedComment(prevState => {
+															return {
+																...prevState,
+																comment: { modifiedComment: e.target.value },
+															};
+														});
+													}}
+												/>
+												<Flex>
 													<Button
 														variant="commentEdit"
 														onClick={() => {
@@ -55,27 +55,24 @@ const BoardComment = ({ comment }) => {
 													>
 														수정
 													</Button>
-												</Box>
+												</Flex>
 											</>
 										) : (
 											<>
-												<Box>
-													<dl>
-														<Text color="##42364B" fs="18px">
-															{comment.comment}
-														</Text>
-													</dl>
-													{/* 여기부터 */}
-													<Button
-														variant="commentEdit"
-														onClick={() => {
-															setIsEdit(prevState => !prevState);
-															setCurrentCommentId(comment.commentId);
-														}}
-													>
-														수정
-													</Button>
-												</Box>
+												<dl>
+													<Text color="##42364B" fs="18px">
+														{comment.comment}
+													</Text>
+												</dl>
+												<Button
+													variant="commentEdit"
+													onClick={() => {
+														setIsEdit(prevState => !prevState);
+														setCurrentCommentId(comment.commentId);
+													}}
+												>
+													수정
+												</Button>
 											</>
 										)}
 										<Button
@@ -86,9 +83,12 @@ const BoardComment = ({ comment }) => {
 										>
 											삭제
 										</Button>
-										{/* 여기까지 */}
 									</>
-								) : null}
+								) : (
+									<Text color="##42364B" fs="18px">
+										{comment.comment}
+									</Text>
+								)}
 							</Box>
 						</li>
 					</ul>
