@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { Box, Button, Margin } from "../../common";
+import { Box, Button, Flex, Margin } from "../../common";
 import {
 	__delBoardItem,
 	__getBoardItem,
@@ -23,16 +23,16 @@ const BoardChangeBtns = () => {
 
 	return (
 		<>
-			{/* <Box width="100%"> */}
-			{/* <Margin margin="0 20px 0 0"> */}
-			<Button color="lightPurple" onClick={handleUpdate}>
-				수정
-			</Button>
-			{/* </Margin> */}
-			<Button color="darkPurple" onClick={handleDelete}>
-				삭제
-			</Button>
-			{/* </Box> */}
+			<Flex variant="editOrDel">
+				<Margin margin="0 10px 0 0">
+					<Button color="lightPurple" onClick={handleUpdate}>
+						수정
+					</Button>
+				</Margin>
+				<Button color="darkPurple" onClick={handleDelete}>
+					삭제
+				</Button>
+			</Flex>
 		</>
 	);
 };
