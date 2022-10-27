@@ -84,8 +84,7 @@ export const Box = styled.div`
 				return css`
 					width: 100%;
 					height: 100%;
-					margin: 30px auto;
-					padding: 0 20px;
+					margin: 10px auto;
 					border-radius: 5px;
 					border: 1px solid #42364b;
 				`;
@@ -93,7 +92,6 @@ export const Box = styled.div`
 				return css`
 					width: 100%;
 					padding: 20px;
-					border-bottom: solid 1px #42364b;
 				`;
 			default:
 				break;
