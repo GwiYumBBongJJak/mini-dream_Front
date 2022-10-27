@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Box, Button, Input, Text, Flex } from "../../common";
+import { Box, Button, Input, Text, Flex, Margin } from "../../common";
 import {
 	__deleteComment,
 	__editComment,
@@ -24,7 +24,7 @@ const BoardComment = ({ comment }) => {
 					<ul>
 						<li>
 							<dl>
-								<Text color="#877E8D" fs="16px" lh="1.5rem">
+								<Text fw="600" color="#877E8D" fs="17px" lh="1.5rem">
 									{comment.nickname}
 								</Text>
 							</dl>
@@ -45,44 +45,52 @@ const BoardComment = ({ comment }) => {
 														});
 													}}
 												/>
-												<Flex>
+												<Margin margin="20px 2px 10px 0">
+													<Flex fd="column" ai="flex-end" jc="center">
+														<Button
+															variant="commentEdit"
+															onClick={() => {
+																dispatch(__editComment(modifiedComment));
+																setIsEdit(prevState => !prevState);
+															}}
+														>
+															EDIT
+														</Button>
+													</Flex>
+												</Margin>
+											</>
+										) : (
+											<>
+												<Margin margin="12px 0">
+													<dl>
+														<Text color="##42364B" fs="18px">
+															{comment.comment}
+														</Text>
+													</dl>
+												</Margin>
+												<Margin dp="inline-block" margin="0 10px 0 0">
 													<Button
 														variant="commentEdit"
 														onClick={() => {
-															dispatch(__editComment(modifiedComment));
 															setIsEdit(prevState => !prevState);
+															setCurrentCommentId(comment.commentId);
 														}}
 													>
 														수정
 													</Button>
-												</Flex>
-											</>
-										) : (
-											<>
-												<dl>
-													<Text color="##42364B" fs="18px">
-														{comment.comment}
-													</Text>
-												</dl>
-												<Button
-													variant="commentEdit"
-													onClick={() => {
-														setIsEdit(prevState => !prevState);
-														setCurrentCommentId(comment.commentId);
-													}}
-												>
-													수정
-												</Button>
+												</Margin>
+												<Margin dp="inline-block">
+													<Button
+														variant="commentDel"
+														onClick={() => {
+															dispatch(__deleteComment(comment.commentId));
+														}}
+													>
+														| 삭제
+													</Button>
+												</Margin>
 											</>
 										)}
-										<Button
-											variant="commentDel"
-											onClick={() => {
-												dispatch(__deleteComment(comment.commentId));
-											}}
-										>
-											삭제
-										</Button>
 									</>
 								) : (
 									<Text color="##42364B" fs="18px">

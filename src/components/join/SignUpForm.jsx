@@ -138,6 +138,7 @@ const SignUpForm = () => {
 						<Flex>
 							<Margin margin="0 25px 0 0">
 								<Button
+									variant="join-button"
 									size="long"
 									bgColor="transparent"
 									radius="true"

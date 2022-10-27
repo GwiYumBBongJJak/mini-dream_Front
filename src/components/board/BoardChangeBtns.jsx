@@ -25,12 +25,12 @@ const BoardChangeBtns = () => {
 		<>
 			<Flex variant="editOrDel">
 				<Margin margin="0 10px 0 0">
-					<Button color="lightPurple" onClick={handleUpdate}>
-						수정
+					<Button variant="commentEdit" onClick={handleUpdate}>
+						EDIT
 					</Button>
 				</Margin>
-				<Button color="darkPurple" onClick={handleDelete}>
-					삭제
+				<Button variant="commentDel" onClick={handleDelete}>
+					| DELETE
 				</Button>
 			</Flex>
 		</>

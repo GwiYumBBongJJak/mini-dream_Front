@@ -114,7 +114,6 @@ export const Button = styled.button`
 			case "small":
 				return css`
 					font-size: 15px;
-					width: 100%;
 				`;
 			default:
 				break;
@@ -153,11 +152,13 @@ export const Button = styled.button`
 				`;
 			case "commentEdit":
 				return css`
-					color: #877e8d;
+					color: #826795;
+					font-size: 16px;
 				`;
 			case "commentDel":
 				return css`
 					color: #42364b;
+					font-size: 16px;
 				`;
 			case "detail-button":
 				return css`
