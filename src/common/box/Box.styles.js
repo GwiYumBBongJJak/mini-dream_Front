@@ -45,7 +45,7 @@ export const Box = styled.div`
 					width: 260px;
 					height: 190px;
 					border-radius: 5px;
-					padding: 25px 30px;
+					padding: 15px 30px;
 					transition: all 1000ms;
 					&:hover {
 						transform: translateY(-2%);

@@ -9,7 +9,7 @@ const initialState = {
 	statusAlertMessage: null,
 	statusMsg: {},
 	error: null,
-	reactions: [],
+	reactions: null,
 	isBoardChange: false,
 };
 

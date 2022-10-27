@@ -8,6 +8,7 @@ export const Button = styled.button`
 	&:hover {
 		opacity: 0.9;
 	}
+
 	${({ size }) => {
 		switch (size) {
 			case "big":
@@ -157,6 +158,11 @@ export const Button = styled.button`
 			case "commentDel":
 				return css`
 					color: #42364b;
+				`;
+			case "detail-button":
+				return css`
+					color: #816299;
+					font-size: 17px;
 				`;
 			default:
 				break;

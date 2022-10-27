@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import { Box, ThirdHeading, Text, Flex } from "../../common";
+import { Box, ThirdHeading, Text, Flex, Button } from "../../common";
 import BoardReactions from "./BoardReactions";
 
 const BoardItem = props => {
 	const navigate = useNavigate();
+
 	return (
 		<Box
 			width="300px"
@@ -19,8 +20,10 @@ const BoardItem = props => {
 						{props.nickname}
 					</Text>
 				</Flex>
-				<Flex variant="list">
-					<BoardReactions />
+				<Flex>
+					<Button variant="detail-button">Inspect</Button>
+					{/* 추가 작업 */}
+					{/* <BoardReactions boardId={props.boardId} /> */}
 				</Flex>
 			</Flex>
 		</Box>

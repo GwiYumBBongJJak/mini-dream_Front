@@ -32,6 +32,9 @@ const BoardDetailPage = () => {
 	const { boardItem, isBoardChange } = useSelector(state => state.board);
 	const { isCommentChange } = useSelector(state => state.comment);
 
+	const { dislikeCount, horrorCount, likeCount } = boardItem;
+	const initialReactions = { dislikeCount, horrorCount, likeCount };
+
 	useEffect(() => {
 		dispatch(__getBoardItem(id));
 		if (isCommentChange) dispatch(__getBoardItem(id));
@@ -73,7 +76,7 @@ const BoardDetailPage = () => {
 						{boardItem.boardContent}
 					</Text>
 					<Flex variant="detailReactions" width="100%">
-						<BoardReactions boardId={id} />
+						<BoardReactions boardId={id} initialReactions={initialReactions} />
 					</Flex>
 					<BoardChangeBtns />
 					<dl>

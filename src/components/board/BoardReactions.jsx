@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { __updateReactions } from "../../redux/modules/board/boardSlice";
 
-const BoardReactions = ({ boardId }) => {
+const BoardReactions = ({ boardId, initialReactions }) => {
+	console.log("initialReactons =>", initialReactions);
 	const dispatch = useDispatch();
 	// 리액션 클릭시 dispatch 호출 핸들러
 	const handleSendReaction = e => {
@@ -15,11 +16,7 @@ const BoardReactions = ({ boardId }) => {
 	console.log("reactons =>", reactions);
 
 	// Reaction state
-	const [reaction, setReaction] = useState({
-		likeCount: 0,
-		dislikeCount: 0,
-		horrorCount: 0,
-	});
+	const [reaction, setReaction] = useState(initialReactions);
 
 	// 리액션 dispatch 응답 결과 감지
 	useEffect(() => {
