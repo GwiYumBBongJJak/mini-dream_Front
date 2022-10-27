@@ -10,6 +10,15 @@ export const Box = styled.div`
 					width: 470px;
 					height: 500px;
 					transition: all 2000ms;
+					animation: fadein 4s;
+					@keyframes fadein {
+						from {
+							opacity: 0;
+						}
+						to {
+							opacity: 1;
+						}
+					}
 					&:hover {
 						transform: translateY(-1%);
 					}

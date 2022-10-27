@@ -9,6 +9,7 @@ const initialState = {
 	statusAlertMessage: null,
 	statusMsg: {},
 	error: null,
+	reactions: [],
 	isBoardChange: false,
 };
 
@@ -113,6 +114,32 @@ export const __getBoardItem = createAsyncThunk(
 	},
 );
 
+// 리액션 추가 / 삭제 요청 API
+export const __updateReactions = createAsyncThunk(
+	"updateReaction",
+	async (payload, thunkAPI) => {
+		try {
+			console.log("updateReaction payload =>", payload);
+			const { boardId, action } = payload;
+			console.log("boardId ==>", +boardId, "reacton =>", action);
+			const token = localStorage.getItem("jwtToken");
+			console.log("getUserInfo token =>", token);
+			const response = await axios.post(
+				`${BASE_URL}/auth/${+boardId}/${action}`,
+				payload,
+				{
+					headers: { Authorization: `${token}` },
+				},
+			);
+			console.log("updateReactions respone=>", response);
+			return thunkAPI.fulfillWithValue(response.data);
+		} catch (error) {
+			console.log("updateReaciotns error => ", error);
+			return thunkAPI.rejectWithValue(error.response.data);
+		}
+	},
+);
+
 const board = createSlice({
 	name: "board",
 	initialState,
@@ -166,6 +193,18 @@ const board = createSlice({
 		},
 		[__getBoardItem.rejected]: (state, action) => {
 			console.log("__getBoardItem rejected=>", action.payload);
+		},
+
+		// 리액션 추가 / 상세 요청 응답
+		[__updateReactions.pending]: (state, _) => {
+			console.log("__updateReactions pending");
+		},
+		[__updateReactions.fulfilled]: (state, action) => {
+			console.log("__updateReactions fulfilled=>", action.payload);
+			state.reactions = action.payload;
+		},
+		[__updateReactions.rejected]: (state, action) => {
+			console.log("__updateReactions rejected=>", action.payload);
 		},
 	},
 });

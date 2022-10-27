@@ -67,7 +67,7 @@ const BoardDetailPage = () => {
 					<ThirdHeading fs="23px">{boardItem.boardTitle}</ThirdHeading>
 					<Text fs="17px">{boardItem.boardContent}</Text>
 					<Flex variant="detailReactions" width="100%">
-						<BoardReactions />
+						<BoardReactions boardId={id} />
 					</Flex>
 					<BoardChangeBtns />
 					<dl>

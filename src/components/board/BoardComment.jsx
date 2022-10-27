@@ -63,10 +63,6 @@ const BoardComment = ({ comment }) => {
 												<Box>
 													<Button
 														onClick={() => {
-															// dispatch(
-															// 	__checkCommentAvailability(comment.commentId),
-															// );
-
 															setIsEdit(prevState => !prevState);
 															setCurrentCommentId(comment.commentId);
 														}}

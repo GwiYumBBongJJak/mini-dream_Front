@@ -7,13 +7,15 @@ import { useEffect } from "react";
 const BoardListPage = () => {
 	const dispatch = useDispatch();
 
-	const { isBoardChange, boardItems } = useSelector(state => state.board);
+	const { isBoardChange, boardItems, reactions } = useSelector(
+		state => state.board,
+	);
 	console.log("isBoard =>", isBoardChange);
 
 	useEffect(() => {
 		dispatch(__getBoardList());
 		if (isBoardChange) dispatch(__getBoardList());
-	}, [dispatch, isBoardChange]);
+	}, [dispatch, isBoardChange, reactions]);
 
 	return (
 		<>
