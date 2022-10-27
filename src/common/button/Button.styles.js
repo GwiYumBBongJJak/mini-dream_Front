@@ -130,24 +130,21 @@ export const Button = styled.button`
 				`;
 			case "lucky":
 				return css`
-					background-color: greenyellow;
-					background-image: url("../../../public/images/lucky.png");
+					background-image: url("/images/lucky.png");
 					background-size: cover;
 					width: 23px;
 					height: 23px;
 				`;
 			case "sad":
 				return css`
-					background-color: skyblue;
-					background-image: url("../../../public/images/sad.png");
+					background-image: url("/images/sad.png");
 					background-size: cover;
 					width: 23px;
 					height: 23px;
 				`;
 			case "horror":
 				return css`
-					background-color: salmon;
-					background-image: url("../../../public/images/horror.png");
+					background-image: url("/images/horror.png");
 					background-size: cover;
 					width: 23px;
 					height: 23px;
