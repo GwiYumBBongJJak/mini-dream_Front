@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 
 export const Input = styled.input`
+	width: ${({ width }) => (width ? width : "")};
 	border: 1px solid #42364b;
 	border-radius: 5px;
 	height: 50px;
@@ -32,7 +33,8 @@ export const Input = styled.input`
         `;
 			case "comment":
 				return css`
-					width: 600px;
+					width: 550px;
+					font-size: 16px;
 				`;
 			case "edit":
 				return css`

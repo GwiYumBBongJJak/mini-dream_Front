@@ -64,8 +64,14 @@ const BoardDetailPage = () => {
 					</Button>
 				</Flex>
 				<Box variant="detail">
-					<ThirdHeading fs="23px">{boardItem.boardTitle}</ThirdHeading>
-					<Text fs="17px">{boardItem.boardContent}</Text>
+					<Flex jc="center">
+						<ThirdHeading mb="35px" fs="23px" color="#42364B">
+							{boardItem.boardTitle}
+						</ThirdHeading>
+					</Flex>
+					<Text lh="1.3em" ls="0.1em" fs="19px" color="#42364B">
+						{boardItem.boardContent}
+					</Text>
 					<Flex variant="detailReactions" width="100%">
 						<BoardReactions boardId={id} />
 					</Flex>
@@ -106,9 +112,11 @@ const BoardDetailPage = () => {
 							등록
 						</Button>
 					</Flex>
-					{boardItem.comments?.map(comment => {
-						return <BoardComment key={comment.commentId} comment={comment} />;
-					})}
+					<Box variant="comments">
+						{boardItem.comments?.map(comment => {
+							return <BoardComment key={comment.commentId} comment={comment} />;
+						})}
+					</Box>
 				</Box>
 			</Flex>
 		</>

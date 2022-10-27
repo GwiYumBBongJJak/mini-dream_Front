@@ -38,7 +38,7 @@ export const Text = styled.p`
 				`;
 			case "horror":
 				return css`
-					color: #d4d4d4;
+					color: #9e9e9e;
 					font-weight: 600;
 					font-size: 20px;
 				`;
