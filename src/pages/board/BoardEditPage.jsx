@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Button, Flex, Header, Input, TextArea, Box, Form } from "../../common";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -7,7 +7,6 @@ import {
 	__updateBoardItem,
 } from "../../redux/modules/board/boardSlice";
 import { FirstHeading } from "../../common";
-import useButton from "../../hooks/useButton";
 
 const BoardEditPage = () => {
 	const dispatch = useDispatch();
@@ -16,7 +15,6 @@ const BoardEditPage = () => {
 	const response = useSelector(state => state.board.boardItem);
 
 	const [boardItem, setBoardItem] = useState({});
-	const { activation } = useButton(boardItem);
 	console.log("@ => boardItem", boardItem);
 
 	useEffect(() => {
@@ -69,13 +67,13 @@ const BoardEditPage = () => {
 										onChange={handleOnChange}
 									/>
 									<Button
+										type="submit"
 										size="big"
 										bgColor="lightPurple"
 										radius="true"
 										color="white"
 										shadow="true"
 										fontSize="small"
-										disabled={!activation}
 									>
 										등록
 									</Button>
