@@ -12,6 +12,7 @@ export const Text = styled.p`
 	line-height: ${({ lh }) => (lh ? lh : "18px")};
 	color: ${({ color }) => (color ? color : "")};
 	padding: ${({ pd }) => (pd ? pd : "")}px;
+	margin: ${({ margin }) => (margin ? margin : "")}px;
 
 	${({ variant }) => {
 		switch (variant) {

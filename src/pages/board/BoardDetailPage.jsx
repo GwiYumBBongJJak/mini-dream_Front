@@ -53,70 +53,64 @@ const BoardDetailPage = () => {
 					</FirstHeading>
 				</Flex>
 			</Header>
-			<Flex width="100%" jc="center" ai="center">
-				<Box width="800px">
-					<Box pd="30px 0 0 22px">
-						<Button
-							variant="back-button"
-							onClick={() => navigate(-1)}
-							color="white"
-						>
-							뒤로가기
-						</Button>
-					</Box>
-					<Flex width="100%" height="66vh" fd="column" jc="center" ai="center">
-						<Box variant="detail">
-							<ThirdHeading>{boardItem.boardTitle}</ThirdHeading>
-							<Text>{boardItem.boardContent}</Text>
-							<Flex jc="flex-end" ai="center">
-								<Margin margin="0 160px 0 0">
-									<BoardReactions />
-								</Margin>
-								<Margin margin="0 50px 0 0">
-									<BoardChangeBtns />
-								</Margin>
-							</Flex>
-							<BoardChangeBtns />
-						</Box>
-						;{/* comments */}
-						<Box>
-							<dl>
-								<dt>댓글</dt>
-								<dl>{boardItem.comments?.length}</dl>
-							</dl>
-							<Box>
-								<Input
-									theme="comment"
-									onChange={e => {
-										setCommentValue(prevState => {
-											return {
-												...prevState,
-												comment: e.target.value,
-											};
-										});
-									}}
-								/>
-								<Button
-									size="small"
-									bgColor="lightPurple"
-									radius="true"
-									color="white"
-									shadow="true"
-									fontSize="small"
-									onClick={() => {
-										dispatch(__addComment(commentValue));
-									}}
-								>
-									등록
-								</Button>
-							</Box>
-						</Box>
+			<Flex fd="column" ai="center">
+				<Flex jc="center" width="100%" margin="50px 730px 0 0">
+					<Button
+						variant="back-button"
+						onClick={() => navigate(-1)}
+						color="white"
+					>
+						뒤로가기
+					</Button>
+				</Flex>
+				<Box variant="detail">
+					<ThirdHeading fs="23px">{boardItem.boardTitle}</ThirdHeading>
+					<Text fs="17px">{boardItem.boardContent}</Text>
+					<Flex variant="detailReactions" width="100%">
+						<BoardReactions />
 					</Flex>
+					<BoardChangeBtns />
+					<dl>
+						<Flex width="100%" fd="row" jc="flex-start">
+							<Margin margin="0 5px 10px 0">
+								<dt>댓글</dt>
+							</Margin>
+							<dl>{boardItem.comments?.length}</dl>
+						</Flex>
+					</dl>
+					<Flex>
+						<Margin margin="0 5px 0 0">
+							<Input
+								theme="comment"
+								onChange={e => {
+									setCommentValue(prevState => {
+										return {
+											...prevState,
+											comment: e.target.value,
+										};
+									});
+								}}
+							/>
+						</Margin>
+						<Button
+							size="small"
+							bgColor="lightPurple"
+							radius="true"
+							color="white"
+							shadow="true"
+							fontSize="small"
+							onClick={() => {
+								dispatch(__addComment(commentValue));
+							}}
+						>
+							등록
+						</Button>
+					</Flex>
+					{boardItem.comments?.map(comment => {
+						return <BoardComment key={comment.commentId} comment={comment} />;
+					})}
 				</Box>
 			</Flex>
-			{boardItem.comments?.map(comment => {
-				return <BoardComment key={comment.commentId} comment={comment} />;
-			})}
 		</>
 	);
 };

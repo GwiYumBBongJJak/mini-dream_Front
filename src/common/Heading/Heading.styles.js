@@ -7,6 +7,7 @@ export const FirstHeading = styled.h1`
 	letter-spacing: ${({ ls }) => (ls ? ls : "")};
 	text-transform: ${({ tt }) => (tt ? tt : "")};
 	font-weight: ${({ fw }) => (fw ? fw : "")};
+	margin: ${({ margin }) => (margin ? margin : "")};
 `;
 export const SecondHeading = styled.h2`
 	color: ${({ color }) => (color ? color : "")};
@@ -33,7 +34,7 @@ export const SecondHeading = styled.h2`
 `;
 export const ThirdHeading = styled.h3`
 	font-weight: 600;
-	margin-bottom: 10px;
+	margin-bottom: 45px;
 	color: ${({ color }) => (color ? color : "")};
 	font-size: ${({ fs }) => (fs ? fs : "")};
 	text-align: ${({ ta }) => (ta ? ta : "")};
